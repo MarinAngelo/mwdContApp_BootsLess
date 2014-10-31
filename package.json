@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Marinus Klap",
   "license": "ISC",
   "dependencies": {
     "connect": "^3.3.0",
