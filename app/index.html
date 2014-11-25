@@ -1,59 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
 <head>
-	<title>Mein JavaScript</title>
+	<title>Kontakte</title>
     <!--braucht das gulpfile um Dateien zusammenzufassen-->
 	<!-- build:css styles.css -->
 	<link rel="stylesheet" href="css/app.css">
 	<link rel="stylesheet" href="bower_components/angular/angular-csp.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	<!-- endbuild -->
-	<!-- build:js scripts.js -->
-	<script src="js/app.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-	<!-- endbuild -->
 </head>
 <body>
-    <div id="wrapper">
-        <header>
-            <div>
-                <nav>
-                    <figure><a href="#"><img src="images/kontakte.png"></a></figure>
-                </nav>
-            </div>
-            <form>
-                <input id="suchFeld" type="search" name="suchFeld" placeholder="Suchbegriff eingeben">
-            </form>
-            <nav>
-                <figure><a href="#"><img src="images/filter.png"></a></figure>
-            </nav>
-        </header>
-        <main>
-            <ul>
-                <li>
-                    <section>
-                        <div id="name">
-                            <figure><a href="#"><img src="images/user.png"></a></figure>
-                            <address><a href="#">Name</a></address>
-                        </div>
-                        <div id="km1">
-                            <figure><a href="#"><img src="images/mobile2.png"></a></figure>
-                        </div>
-                        <div id="km2">
-                            <figure><a href="#"><img src="images/phone.png"></a></figure>
-                        </div>
-                        <div id="km3">
-                            <figure><a href="#"><img src="images/bubbles3.png"></a></figure>
-                        </div>
-                    </section>
-                </li>
-            </ul>
-        </main>
-        <footer>
-            <p>impressum und copyright</p>
-        </footer>
-    </div>
+    <div ng-include="'views/main.html'"></div>
+    <!-- build:js scripts.js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers/main.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbuild -->
     </body>
 </html>

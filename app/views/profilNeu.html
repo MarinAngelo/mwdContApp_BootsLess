@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profil Neu</title>
+	<!-- build:css styles.css -->
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="bower_components/angular/angular-csp.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<!-- endbuild -->
+</head>
+<body>
+<header>
+	<nav>
+		<a href="../index.html">zurück</a>
+		<a href="#">speichern</a>
+	</nav>
+</header>
+<form>
+	<fieldset><!---Profilbild, Name und Adresse-->
+	<legend>Profilbild / Symbol</legend>
+	<label for="bildUpload">Profilbild hochzuladen</label>
+	<input type="file" name="bildUpload" id="bildUpload" onchange="fileSelected();">
+	<label for="selectIcon">Symbol aussuchen</label>
+	<select name"selectIcon">
+		<option>Herz</option>
+		<option>Auto</option>
+		<option>Kleblatt</option>
+		<option>Smili</option>
+	</select>
+	</fieldset>
+	<fieldset>
+		<legend>Person / Firma</legend>
+
+	<input type="text" name="name" id="name" value="" placeholder="Name">
+	<textarea rows="2" cols="20" name="adresse" id="adresse" value="" placeholder="Adresse"></textarea>
+		<select neme="adressTyp" value="Privat">
+		<option>Privat</option>
+		<option>Geschäft</option>
+	</select>
+	<button>+ Adresse</button>	
+	</fieldset>
+	<fieldset>	
+		<legend>Telefonnummern</legend>
+		<input type="text" name="tkm1Info1" id="tkm1Info1" value="" placeholder="Tel. Nr.">
+		<input type="checkbox" name="mobTel" value="Mobil Telefon" checked="true">Mobil Telefon
+		<input type="checkbox" name="festTel" value="Telefon">Telefon
+		<input type="checkbox" name="sms" value="SMS">SMS
+		<input type="checkbox" name="fax" value="Fax">Fax
+		<input type="checkbox" name="pager" value="Pager">Pager
+		<input type="checkbox" name="startPageYes" value="SPY" checked="true">Zur Startseite hinzufügen
+		<button>+ Telefonnummer</button>
+	</fieldset>
+</form>
+<!-- build:js scripts.js -->
+	<script src="js/app.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+	<!-- endbuild -->
+</body>
+</html>
