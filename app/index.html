@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html>
 <head>
 	<title>Kontakte</title>
     <!--braucht das gulpfile um Dateien zusammenzufassen-->
@@ -10,13 +10,48 @@
 	<!-- endbuild -->
 </head>
 <body>
-    <div ng-include="'views/main.html'"></div>
+    <div class="container">
+    <header>
+        <nav>
+            <figure><a href="#"><img src="images/menu2.png"></a></figure>
+        </nav>
+        <form>
+            <input type="search" id="suchFeld" name="suchFeld" placeholder="Suchbegriff eingeben">
+        </form>
+        <figure><a href="#"><img src="images/filter.png"></a></figure>
+        <figure><a href="#"><img src="images/plus.png"></a></figure>
+    </header>
+        <main>
+        <ul>
+            <li><!--Iteration durch alle Instanzen-->
+                <section>
+                    <div id="name">
+                        <figure><a href="profilDetails.html"><img src="images/user.png"></a></figure>
+                        <address><a href="profilDetails.html">Name</a></address><!--wenn Bild vorhanden ist Name dahinter versteckt-->
+                    </div>
+                    <div id="km1">
+                        <figure id="km1Sympol"><a id="km1Link" href="#"><img src="images/mobile2.png"></a></figure>
+                    </div>
+                    <div id="km2">
+                        <figure id="km2Sympol"><a id="km2Link" href="#"><img src="images/phone.png"></a></figure>
+                    </div>
+                    <div id="km3">
+                        <figure id="km3Sympol"><a id="km3Link" href="#"><img src="images/bubbles3.png"></a></figure>
+                    </div>
+                    <!--evtl. weitere km´s, durch swipen-->
+                </section>
+            </li>
+        </ul>
+    </main>
+    </div>
     <!-- build:js scripts.js -->
-    <script src="js/app.js"></script>
-    <script src="js/controllers/main.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+
     <!-- endbuild -->
     </body>
 </html>
