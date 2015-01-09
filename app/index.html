@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="adressApp">
 <head>
 	<title>Kontakte</title>
     <!--braucht das gulpfile um Dateien zusammenzufassen-->
@@ -7,19 +7,44 @@
 	<link rel="stylesheet" href="css/app.css">
 	<link rel="stylesheet" href="bower_components/angular/angular-csp.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- endbuild -->
 </head>
 <body>
-    <div class="container">
-    <header>
-        <nav>
-            <figure><a href="#"><img src="images/menu2.png"></a></figure>
+<!--<h2>Angular Test</h2>
+Name: <input type="text" ng-model="name"> {{name}}
+<div ng-view>
+    
+</div>-->
+    
+    <header class="navbar navbar-default">
+        <div class="container-fluid">
+        <nav class=""><!--navbar-header / weglassen um Umbruch in MV zu vermeiden-->
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
         </nav>
-        <form>
-            <input type="search" id="suchFeld" name="suchFeld" placeholder="Suchbegriff eingeben">
+        <nav class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Link1</a></li>
+            <li><a href="#">Link1</a></li>
+            <li><a href="#">Link1</a></li>
+            <li><a href="#">Link1</a></li>
+            <li><a href="#">Link1</a></li>
+            <li><a href="#">Link1</a></li>
+        </ul>
+        </nav>
+        <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+            <input class="form-control" type="search" id="suchFeld" name="suchFeld" placeholder="Suchbegriff eingeben">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        <figure><a href="#"><img src="images/filter.png"></a></figure>
-        <figure><a href="#"><img src="images/plus.png"></a></figure>
+        <figure><a href="profilNeu.html"><img src="images/plus.png"></a></figure>
+        </div>
     </header>
         <main>
         <ul>
@@ -44,13 +69,14 @@
         </ul>
     </main>
     </div>
-    <!-- build:js scripts.js -->
+    <!-- build:js scripts.js-->
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
-    <script src="bower_components/angular/angular.min.js"></script>
+    
 
     <!-- endbuild -->
     </body>
