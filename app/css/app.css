@@ -2,7 +2,7 @@ body {
 	background-color: tomato;
 }
 .navbar-form .form-group #suchFeld {
-	width: 100px;
+	width: 200px;
 }
 .navbar-form {
 	margin: 0 !important;

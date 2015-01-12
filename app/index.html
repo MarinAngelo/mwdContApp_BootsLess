@@ -16,30 +16,9 @@ Name: <input type="text" ng-model="name"> {{name}}
 <div ng-view>
 
 </div>-->
-
     <header role="navigation" class="navbar navbar-default">
 			<div class="container-fluid">
-					<nav class="navbar-header"><!-- weglassen um Umbruch in MV zu vermeiden-->
-					<!--Hamburger Menue-->
-           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-			<!--Plus Button-->
-			<button type="button" class="btn btn-default navbar-btn navbar-right"><a href="profilNeu.html">
-				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></button>
-
-			<!--Suchfeld-->
-              <form class="navbar-form navbar-center" role="search"><!-- -->
-        <div class="form-group">
-            <input class="form-control" type="search" id="suchFeld" name="suchFeld" placeholder="Suchbegriff eingeben">
-        </div>
-				<button type="submit" class="btn btn-default">Submit</button>
-        </form>
-        </nav>
-				<!--Toggle Navi-->
+                            <!--Toggle Navi-->
         <nav class="collapse navbar-collapse navbar-left" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <li class="active"><a href="#">Link1</a></li>
@@ -49,6 +28,25 @@ Name: <input type="text" ng-model="name"> {{name}}
             <li><a href="#">Link5</a></li>
             <li><a href="#">Link6</a></li>
         </ul>
+        </nav>
+					<nav class="navbar-header"><!-- weglassen um Umbruch in MV zu vermeiden-->
+					<!--Hamburger Menue-->
+           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+			<!--Suchfeld-->
+              <form class="navbar-form" role="search"><!-- -->
+        <div class="form-group">
+            <input class="form-control" type="search" id="suchFeld" name="suchFeld" placeholder="Suchbegriff eingeben">
+        </div>
+				<button type="submit" class="btn btn-default">Submit</button>
+        </form>
+                    <!--Plus Button-->
+            <button type="button" class="btn btn-default navbar-btn navbar-right"><a href="profilNeu.html">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a></button>
         </nav>
         </div>
     </header>
@@ -83,8 +81,6 @@ Name: <input type="text" ng-model="name"> {{name}}
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
-
-
     <!-- endbuild -->
     </body>
 </html>
