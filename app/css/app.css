@@ -1,3 +1,14 @@
 body {
-	background-color: tomato; 
+	background-color: tomato;
+}
+.navbar-form .form-group #suchFeld {
+	width: 100px;
+}
+.navbar-form {
+	margin: 0 !important;
+	padding: 0 !important;
+
+}
+.navbar-toggle {
+	float: left !important;
 }
