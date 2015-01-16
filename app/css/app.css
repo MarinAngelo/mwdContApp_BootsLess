@@ -1,3 +1,4 @@
+/*bootstrap overwrites*/
 body {
 	background-color: tomato;
 }
@@ -11,4 +12,8 @@ body {
 }
 .navbar-toggle {
 	float: left !important;
+}
+/*additionsl css*/
+ul.dispIn li > * {
+	display: inline;
 }

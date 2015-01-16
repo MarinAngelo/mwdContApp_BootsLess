@@ -1,101 +1,122 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Profil Neu</title>
-	<!-- build:css styles.css -->
-	<link rel="stylesheet" href="css/app.css">
-	<link rel="stylesheet" href="bower_components/angular/angular-csp.css">
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-	<!-- endbuild -->
-</head>
+<html ng-app="adressApp">
+<ng-include src="'head.html'"></ng-include>
 <body>
-<header>
-	<nav>
-		<a href="../index.html"><img src="../images/arrow-left3.png"></a>
-		<a href="#"><img src="../images/checkmark-circle.png"></a>
-		<a href="#"><img src="../images/remove2.png"></a>
-	</nav>
-</header>
-<form>
-	<fieldset><!---Profilbild, Name und Adresse-->
-	<label for="bildUpload">Foto</label>
-	<input type="file" name="bildUpload" id="bildUpload" onchange="fileSelected();">
-	<button>Datei hochladen</button>
-	<label for="selectIcon">Symbol aussuchen</label>
-	<select name"selectIcon">
-		<option>Herz</option>
-		<option>Auto</option>
-		<option>Kleblatt</option>
-		<option>Smili</option>
-	</select>
-		<input type="checkbox" name="favIcon" value="favIcon">Short Cut Icon verwenden
-		<input type="color">Farbe wählen
-	</fieldset>
-	<fieldset><!--Name, Adresse-->
-	<input type="text" name="name" id="name" value="" placeholder="Name" autofocus>
-	<textarea rows="2" cols="20" name="adresse" id="adresse" value="" placeholder="Adresse"></textarea>
-		<select neme="adressTyp" value="Privat">
-			<option>Privat</option>
-			<option>Geschäft</option>
-		</select>
-		<select>
-			<option>Erste Adresse</option>
-			<option>Zweite Adresse</option>
-			<option>Dritte Adresse</option>
-			<option>Weitere Adressse</option>
-		</select>
-	<button>+ Adresse</button>	
-	</fieldset>
-	<fieldset><!--Telefonnummern-->
-		<select>
-			<option>Mobil</option>
-			<option>Festnetz</option>
-		</select>
-		<input type="text" name="tkm1Info1" id="tkm1Info1" value="" placeholder="Tel. Nr.">
-		<input type="checkbox" name="sms" value="SMS">Telefon
-		<input type="checkbox" name="sms" value="SMS">SMS
-		<input type="checkbox" name="fax" value="Fax">Fax
-		<input type="checkbox" name="pager" value="Pager">Pager
-		<input type="checkbox" name="startPageYes" value="SPY" checked="true">Zur Startseite hinzufügen
-		<button>+ Telefonnummer</button>
-	</fieldset>
-	<fieldset>
-		<legend>E-Mail Adressen</legend>
-		<select>
-			<option>Privat</option>
-			<option>Geschäft</option>
-		</select>
-		<input type="email" name="email" id="email" placeholder="E-Mail">
-		<input type="checkbox" name="startPageYes" value="SPY" checked="true">Zur Startseite hinzufügen
-		<button>+ E-Mail</button>
-	</fieldset>
-	<fieldset>
-		<legend>Website</legend>
-		<select>
-			<option>Privat</option>
-			<option>Geschäft</option>
-		</select>
-		<input type="url" name="url" id="url" placeholder="URL Website">
-		<button>+ URL Website</button>
-	</fieldset>
-	<fieldset>
-		<legend>Messinger</legend>
-		<a href="#"><img src="../images/skype.png"></a>
-		<button>+ Messinger</button>
-	</fieldset>
-		<fieldset>
-		<legend>Social Media Profil</legend>
-		<a href="#"><img src="../images/google-plus.png"></a>
-		<input type="url" name="url" placeholder="URL Social Media Profil">
-		<button>+ Social Media Profil</button>
-	</fieldset>
+	<div class="container-fluid">
+		<header>
+			<nav>
+				<a href="../index.html"><img src="../images/arrow-left3.png"></a><!--back home-->
+				<a href="#"><img src="../images/checkmark-circle.png"></a><!--add data to db-->
+				<a href="#"><img src="../images/remove2.png"></a><!--reset form-->
+			</nav>
+		</header>
+		<form>
+			<div class="panel panel-default">
+				<!-- Default panel contents -->
+				<div class="panel-heading">Profil Icon</div>
+				<fieldset><!---Profilbild, Name und Adresse-->
+					<div class="form-group">
+						<label for="bildUpload">Foto..</label>
+						<input type="file" name="bildUpload" id="bildUpload" onchange="fileSelected();">
+					</div>
+					<button class="btn btn-default btn-xs">hochladen</button>
+					<div class="form-group">
+						<label for="selectIcon">..oder Symbol</label>
+						<select name"selectIcon" class="form-control">
+							<option>Herz</option>
+							<option>Auto</option>
+							<option>Kleblatt</option>
+							<option>Smili</option>
+						</select>
+					</div>
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="favIcon" value="favIcon">..oder Short Cut Icon verwenden
+						</label>
+					</div>
+					<div class="form-group">
+						<label for="farbeAusw">Farbe wählen</label>
+						<input type="color" class="form-control" name="farbeAusw">
+					</div>
+				</div>
+			</fieldset>
+			<fieldset><!--Name, Adresse-->
+				<div class="form-group">
+					<input type="text" class="form-control" name="name" id="name" value="" placeholder="Name">
+				</div>
+				<div class="form-group">
+					<textarea rows="2" cols="20" name="adresse" class="form-control"id="adresse" value="" placeholder="Adresse"></textarea>
+				</div>
+				<div class="form-group">
+					<select neme="adressTyp" class="form-control" value="Privat">
+						<option>Privat</option>
+						<option>Geschäft</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<select class="form-control">
+						<option>Erste Adresse</option>
+						<option>Zweite Adresse</option>
+						<option>Dritte Adresse</option>
+						<option>Weitere Adressse</option>
+					</select>
+				</div>
+				<button class="btn btn-default btn-xs">+ Adresse</button>	
+			</fieldset>
+			<hr>
+			<fieldset><!--Telefonnummern-->
+				<select class="form-control">
+					<option>Mobil</option>
+					<option>Festnetz</option>
+				</select>
+				<input type="text" name="tkm1Info1" class="form-control" id="tkm1Info1" value="" placeholder="Tel. Nr.">
+				<input type="checkbox" name="sms" value="SMS">Telefon
+				<input type="checkbox" name="sms" value="SMS">SMS
+				<input type="checkbox" name="fax" value="Fax">Fax
+				<input type="checkbox" name="pager" value="Pager">Pager
+				<input type="checkbox" name="startPageYes" value="SPY" checked="true">Zur Startseite hinzufügen
+				<button>+ Telefonnummer</button>
+			</fieldset>
+			<fieldset>
+				<legend>E-Mail Adressen</legend>
+				<select>
+					<option>Privat</option>
+					<option>Geschäft</option>
+				</select>
+				<input type="email" name="email" id="email" placeholder="E-Mail">
+				<input type="checkbox" name="startPageYes" value="SPY" checked="true">Zur Startseite hinzufügen
+				<button>+ E-Mail</button>
+			</fieldset>
+			<fieldset>
+				<legend>Website</legend>
+				<select>
+					<option>Privat</option>
+					<option>Geschäft</option>
+				</select>
+				<input type="url" name="url" id="url" placeholder="URL Website">
+				<button>+ URL Website</button>
+			</fieldset>
+			<fieldset>
+				<legend>Messinger</legend>
+				<a href="#"><img src="../images/skype.png"></a>
+				<button>+ Messinger</button>
+			</fieldset>
+			<fieldset>
+				<legend>Social Media Profil</legend>
+				<a href="#"><img src="../images/google-plus.png"></a>
+				<input type="url" name="url" placeholder="URL Social Media Profil">
+				<button>+ Social Media Profil</button>
+			</fieldset>
 
-</form>
-<!-- build:js scripts.js -->
-	<script src="js/app.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-	<!-- endbuild -->
+		</form>
+		<!-- build:js scripts.js-->
+		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="bower_components/angular-route/angular-route.min.js"></script>
+		<script src="scripts/app.js"></script>
+		<script src="scripts/controllers/main.js"></script>
+		<!-- endbuild -->
+	</div>
 </body>
 </html>
