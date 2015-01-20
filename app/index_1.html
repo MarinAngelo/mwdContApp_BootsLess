@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="adressApp">
+<head>
+	<title>Kontakte</title>
+    <!--braucht das gulpfile um Dateien zusammenzufassen-->
+    <!-- build:css styles.css -->
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="bower_components/angular/angular-csp.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootcards/dist/css/bootcards-android.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- endbuild -->
+</head>
+<body>
+<div class="row">
+      <div class="col-sm-5 bootcards-list">
+      
+<div class="bootcards-list">
+
+  <div class="panel panel-default">
+    <div class="list-group">
+    <!-- card -->
+      <a class="list-group-item" href="#">
+<!--     <img src="/images/Sofia Acey.jpg" class="img-rounded pull-left"/>-->
+         <figure><img src="images/user.png" class="img-rounded pull-left"></figure>
+
+        <h4 class="list-group-item-heading">Marinus Klap</h4>
+        <!-- <p class="list-group-item-text">Masung Corp.</p> -->
+        <p class="list-group-item-text">Klap-Webdevelopment</p>
+      </a>
+      <!-- card -->
+      <a class="list-group-item" href="#">
+        <img src="/images/Joseph Barish.jpg" class="img-rounded pull-left"/>
+        <h4 class="list-group-item-heading">Barish, Joseph</h4>
+        <p class="list-group-item-text">Masung Corp.</p>
+      </a>
+      <!-- card -->
+      <a class="list-group-item" href="#">
+        <img src="/images/Sarah Benson.jpg" class="img-rounded pull-left"/>
+        <h4 class="list-group-item-heading">Benson, Sarah</h4>
+        <p class="list-group-item-text">ZetaComm</p>
+      </a>
+    </div>
+  </div>
+</div>        
+      </div>
+      <div class="col-sm-7 bootcards-cards">
+      
+        ...your Bootcards Cards go here...
+        
+      </div>
+    </div>
+<!-- build:js js.js-->
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/bootcards/dist/js/bootcards.min.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-route/angular-route.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers/main.js"></script>
+<!-- endbuild -->
+</body>
+</html>
