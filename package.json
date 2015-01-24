@@ -1,26 +1,39 @@
 {
-  "name": "Gulp-Test",
-  "version": "1.0.0",
-  "description": "",
-  "private": true,
+  "name": "eb_iz501431_thomas_beispielprojekt",
+  "version": "0.0.1",
+  "description": "Thomas Beispiel",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp test"
   },
-  "author": "Marinus Klap",
-  "license": "ISC",
-  "dependencies": {
-    "connect": "^3.3.0",
+  "repository": {
+    "type": "git",
+    "url": "iz501431@eb-git.eb-zuerich.ch:git_repos/beispielprojekt/thomas.git"
+  },
+  "keywords": [
+    "training"
+  ],
+  "author": "Thomas Gressly",
+  "license": "MIT",
+  "devDependencies": {
+    "connect": "^3.3.1",
     "connect-livereload": "^0.5.0",
     "del": "^0.1.3",
-    "gulp": "^3.8.8",
+    "gulp": "^3.8.9",
     "gulp-csso": "^0.2.9",
     "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^2.1.0",
+    "gulp-jshint": "^1.9.0",
     "gulp-livereload": "^2.1.1",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-ng-annotate": "^0.4.3",
+    "gulp-stylus": "^1.3.4",
     "gulp-uglify": "^1.0.1",
     "gulp-useref": "^1.0.2",
+    "multipipe": "^0.1.2",
+    "nib": "^1.0.4",
     "opn": "^1.0.0",
     "serve-index": "^1.5.0",
-    "serve-static": "^1.7.0"
+    "serve-static": "^1.7.1"
   }
 }
