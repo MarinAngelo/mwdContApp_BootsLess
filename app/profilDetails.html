@@ -1,54 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="adressApp">
 <ng-include src="'head.html'"></ng-include>
-<body>
-<header>
-	<nav>
-		<a href="../index.html"><img src="../images/arrow-left3.png"></a>
-		<a href="profilNeu.html"><img src="../images/plus.png"></a>
-		<a href="#"><img src="../images/remove2.png"></a>
-		<a href="#"><img src="../images/pencil2.png"></a><!--inplace editing wird hier aur "true gesetzt"-->
-	</nav>
-</header>
-<main>
-	<ul>
-		<section>
-			<li>
-				<a href="#"><img src="../images/user.png"></a><span contenteditable="true">Marinus Klap</span>
-			</li>
-			<li contenteditable="true">Wässeri 10</br>8816 Hirzel</li><!--*1:wenn mehrere Adressen vorhanden ">" Symbol anzeigen und iterieren-->
-		</section>
-		<section><!--Telefonnummern mit entsprechend zugeordneten Symbolen, bzw. Funktionen-->
-			<li>
-				<a href="#"><img src="../images/mobile2.png"></a>
-				<a href="#"><img src="../images/bubbles3.png"></a>
-				<span contenteditable="true">076 572 15 28</span>
-			</li>
-		</section>
-		<section><!--email-->
-			<li><a href="#"><img src="../images/envelop.png"></a><span contenteditable="true">marinus.klap@gmail.com</span></li>
-		</section>
-				<section><!--www-->
-			<li><a href="#"><img src="../images/globe.png"></a><span contenteditable="true"><a href="http://www.google.com/">www.google.com</a></span></li>
-		</section>
 
-				<section><!--messinger-->
-			<li><a href="#"><img src="../images/skype.png"></a></li>
-		</section>
-				</section>
-				<section><!--soz media prifil-->
-			<li><a href="#"><img src="../images/tumblr.png"></a></li>
-		</section>
-		<section><!--soz media posts-->
-			<li><a href="#"><img src="../images/facebook.png"></a>bla bla</li>
-		</section>
-		</ul>
-</main>
-<!-- build:js scripts.js -->
-	<script src="js/app.js"></script>
-	<script src="bower_components/angular/angular.js"></script>
+<body>
+    <div class="container">
+        <ng-include src="'header_1.html'"></ng-include>
+        <ng-include src="'profilDetailsPart.html'"></ng-include>
+
+
+    </div>
+    <!-- build:js js.js-->
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
-	<!-- endbuild -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/main.js"></script>
+    <!-- endbuild -->
 </body>
+
 </html>

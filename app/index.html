@@ -4,7 +4,7 @@
 
 <body>
 	<div class="container">
-		<ng-include src="'header_2.html'"></ng-include>
+		<ng-include src="'header_1.html'"></ng-include>
 		<main>
 		<section class="row">
 				<div class="panel panel-default col-sm-6">
@@ -160,53 +160,9 @@
 						</ul>
 					</div>
 				</div>
-
-				<div id="detailAns" class="col-sm-6">
-					<div class="detailPanel panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title" contenteditable="true">Marinus Klap</h3>
-							<button class="btn btn-default">Bearbeiten</button>
-						</div>
-						<div class="panel-body">
-
-							<ul class="list-group">
-								<li class="list-group-item">
-									<a href="#"><img src="../images/user.png">
-									</a><span contenteditable="true">Marinus Klap</span>
-								</li>
-								<li class="list-group-item" contenteditable="true">Wässeri 10</br>8816 Hirzel</li>
-								<!--*1:wenn mehrere Adressen vorhanden ">" Symbol anzeigen und iterieren-->
-								<li class="list-group-item">
-									<a href="#"><img src="../images/mobile2.png">
-									</a>
-									<a href="#"><img src="../images/bubbles3.png">
-									</a>
-									<span contenteditable="true">076 572 15 28</span>
-								</li>
-								<li class="list-group-item">
-									<a href="#"><img src="../images/envelop.png">
-									</a><span contenteditable="true">marinus.klap@gmail.com</span>
-								</li>
-								<li class="list-group-item">
-									<a href="#"><img src="../images/globe.png">
-									</a><span contenteditable="true"><a href="http://www.google.com/">www.google.com</a></span>
-								</li>
-
-								<li class="list-group-item">
-									<a href="#"><img src="../images/skype.png">
-									</a>
-								</li>
-								<li class="list-group-item">
-									<a href="#"><img src="../images/tumblr.png">
-									</a>
-								</li>
-								<li class="list-group-item">
-									<a href="#"><img src="../images/facebook.png">
-									</a>bla bla</li>
-								</ul>
-							</div>
-						</div>
-					</div>
+				<div class="col-sm-6">
+<ng-include src="'profilDetailsPart.html'"></ng-include>
+</div>
 				</section>
 			</main>
 		</div>

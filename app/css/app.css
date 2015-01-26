@@ -1,7 +1,5 @@
 /*bootstrap overwrites*/
-body {
-  background-color: #ff6347 !important;
-}
+
 div.col-sm-6:nth-child(1) {
   padding-right: 0;
   padding-left: 0;
