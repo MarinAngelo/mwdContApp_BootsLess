@@ -4,19 +4,8 @@
 
 <body>
     <div class="container">
-        <header>
-            <nav>
-                <a href="../index.html"><img src="../images/arrow-left3.png">
-                </a>
-                <!--back home-->
-                <a href="#"><img src="../images/checkmark-circle.png">
-                </a>
-                <!--add data to db-->
-                <a href="#"><img src="../images/remove2.png">
-                </a>
-                <!--reset form-->
-            </nav>
-        </header>
+        <ng-include src="'header_1.html'"></ng-include>
+
         <form action="">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -93,7 +82,7 @@
                             </div>
                             <div class="checkbox-inline">
                                 <label>
-                                    <input type="checkbox" name="sms" value="SMS">Telefon
+                                    <input type="checkbox" name="sms" value="SMS">Tel.
                                 </label>
                             </div>
                             <div class="checkbox-inline">
@@ -134,7 +123,7 @@
                                     <input type="checkbox" name="startPageYes" value="SPY" checked="true">Zur Startseite hinzufügen
                                 </label>
                             </div>
-                            <button>+ E-Mail</button>
+                            <button class="btn btn-default btn-xs">+ E-Mail</button>
                         </fieldset>
                     </div>
                 </div>
