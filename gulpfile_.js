@@ -3,8 +3,9 @@
 var SERVER_PORT = 9000;
 
 var gulp = require('gulp');
-
 var del = require('del');
+var less = require('gulp-less');
+var path = require('path');
 
 var serveStatic = require('serve-static');
 var serveIndex = require('serve-index');
@@ -18,11 +19,26 @@ var uglify = require('gulp-uglify');
 var csso = require('gulp-csso');
 var useref = require('gulp-useref');
 
+// Compile Our Less kopie von Sven
+// gulp.task('less', function() {
+// 	return gulp.src('app/css/styles.less')
+// 		.pipe(less())
+// 		.pipe(gulp.dest('app/css'));
+// });
+
+gulp.task('less', function () {
+  gulp.src('app/*.less')
+    .pipe(less({
+      paths: [ path.join(__dirname, 'app', 'includes') ]
+    }))
+    .pipe(gulp.dest('app/css'));
+});
+
 gulp.task('clean', function(cb) {
 	del(['dist'], cb);
 });
 
-gulp.task('build', function() {
+gulp.task('build', ["less"], function() {
 	var assets = useref.assets();
 
 	return gulp.src(['app/**/*.html'], {dot: true})
@@ -56,7 +72,7 @@ gulp.task('serve', ['connect'], function() {
 	opn('http://localhost:'+SERVER_PORT);
 });
 
-gulp.task('watch', ['connect', 'serve'], function () {
+gulp.task('watch', ['connect', 'serve', 'less'], function () {
 	gulpLivereload.listen();
 	gulp.watch([
 		'app/**',
