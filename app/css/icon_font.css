@@ -1,0 +1,41 @@
+@font-face {
+  src: url("../fonts/icomoon.woff") format('woff');
+  font-family: Icons;
+}
+.icon/*,
+.contact::before,
+.add-contact::before*/ {
+  font-family: Icons;
+  -ms-font-feature-settings: "liga" 1, "dlig" 1;
+  -moz-font-feature-settings: "liga=1", "dlig=1";
+  -moz-font-feature-settings: "liga" 1, "dlig" 1;
+  font-feature-settings: "liga" 1, "dlig" 1;
+  font-variant-ligatures: common-ligatures;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+/*button.icon {
+  background: transparent;
+  border: none;
+}
+.contact::before {
+  content: "person";
+}
+.add-contact::before {
+  content: "add-person";
+}
+.icon:hover {
+  color: #8000ff;
+}*/
+figure.profilIcon {
+  font-size: 5em;
+  line-height: 0.9em;
+  margin-right: 0.1em;
+  margin-left: -0.1em;
+}
+div.profilAction {
+ font-size: 2em;
+  line-height: 0.9em;
+  margin-right: 0.1em;
+}
