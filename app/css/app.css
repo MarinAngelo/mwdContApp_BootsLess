@@ -1,6 +1,19 @@
-/*bootstrap overwrites*/
-body {
-  background-color: #00f;
+.navbar {
+  margin-bottom: 0px !important;
+  padding-right: 8px;
+}
+.navbar-header .btn {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+.navbar-brand {
+  margin-left: 15px;
+}
+.row {
+  margin: 0 !important;
+}
+.panel-heading {
+  padding: 8px 8px;
 }
 div.col-sm-6:nth-child(1) {
   padding-right: 0;

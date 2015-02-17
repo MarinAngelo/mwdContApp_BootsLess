@@ -890,7 +890,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #ff9b73;
-  background-color: blue;
+  background-color: lightblue;
 }
 input,
 button,
@@ -935,7 +935,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  background-color: blue;
+  background-color: lightblue;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -2082,7 +2082,7 @@ th {
   border-top: 2px solid #dddddd;
 }
 .table .table {
-  background-color: blue;
+  background-color: lightblue;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -3680,7 +3680,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #ffccb8;
-  background-color: blue;
+  background-color: lightblue;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -3726,7 +3726,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: blue;
+    border-bottom-color: lightblue;
   }
 }
 .nav-pills > li {
@@ -3794,7 +3794,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
-    border-bottom-color: blue;
+    border-bottom-color: lightblue;
   }
 }
 .tab-content > .tab-pane {
@@ -4639,7 +4639,7 @@ a.badge:focus {
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
-  background-color: blue;
+  background-color: lightblue;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: border 0.2s ease-in-out;
@@ -6284,62 +6284,4 @@ button.close {
   .hidden-print {
     display: none !important;
   }
-}
-body {
-  background-color: blue !important;
-}
-.navbar {
-  margin-bottom: 0px;
-  padding-right: 8px;
-}
-.navbar-header .btn {
-  margin-top: 0.8em;
-  margin-bottom: 0.8em;
-}
-.navbar-brand {
-  margin-left: 15px;
-}
-.panel-heading {
-  padding: 8px 8px;
-}
-div.col-sm-6:nth-child(1) {
-  padding-right: 0;
-  padding-left: 0;
-}
-/*additionsl css*/
-header {
-  padding-top: 0.8em;
-  padding-bottom: 0.8em;
-}
-li.list-group-item figure {
-  display: inline;
-}
-/*positionierung der Items in list group item*/
-div.profilImage {
-  float: left;
-}
-div.profilAction {
-  float: left;
-}
-li.list-group-item {
-  overflow: hidden;
-}
-/*auszeichnung der Items in list group item*/
-div.profilAction h4 {
-  margin-top: 0;
-  margin-bottom: 12px;
-}
-div.panel-heading button {
-  float: right;
-}
-div.panel-heading h3 {
-  float: left;
-}
-.panel-heading {
-  overflow: hidden;
-}
-.footer {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
