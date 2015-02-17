@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html ng-app="adressApp">
-<ng-include src="'head.html'"></ng-include>
+<ng-include src="'parts/head.html'"></ng-include>
 
 <body>
     <div class="container">
-        <ng-include src="'header_1.html'"></ng-include>
+        <ng-include src="'parts/header_1.html'"></ng-include>
         <main>
             <section class="row">
                 <div class="panel panel-default col-sm-6">
@@ -161,12 +161,12 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <ng-include src="'profilDetailsPart.html'"></ng-include>
+                    <ng-include src="'parts/profilDetailsPart.html'"></ng-include>
                 </div>
             </section>
         </main>
     </div>
-    <ng-include src="'footer.html'"></ng-include>
+    <ng-include src="'parts/footer.html'"></ng-include>
     <!-- build:js js.js-->
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>

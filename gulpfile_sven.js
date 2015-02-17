@@ -20,19 +20,19 @@ var csso = require('gulp-csso');
 var useref = require('gulp-useref');
 
 // Compile Our Less kopie von Sven
-// gulp.task('less', function() {
-// 	return gulp.src('app/css/styles.less')
-// 		.pipe(less())
-// 		.pipe(gulp.dest('app/css'));
-// });
-
-gulp.task('less', function () {
-  gulp.src('app/*.less')
-    .pipe(less({
-      paths: [ path.join(__dirname, 'app', 'includes') ]
-    }))
-    .pipe(gulp.dest('app/css'));
+gulp.task('less', function() {
+	return gulp.src('app/css/*.less')
+		.pipe(less())
+		.pipe(gulp.dest('app/css'));
 });
+
+// gulp.task('less', function () {
+//   gulp.src('app/*.less')
+//     .pipe(less({
+//       paths: [ path.join(__dirname, 'app', 'includes') ]
+//     }))
+//     .pipe(gulp.dest('app/css'));
+// });
 
 gulp.task('clean', function(cb) {
 	del(['dist'], cb);

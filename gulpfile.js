@@ -8,10 +8,11 @@ var opn               = require('opn');
 var connectLivereload = require('connect-livereload');
 var nib               = require('nib');
 var pipe              = require('multipipe');
-
 var gulp              = require('gulp');
-
+var less              = require('gulp-less');
+var path              = require('path');
 var plugins           = require('gulp-load-plugins')();
+
 
 var handleError = function(err) {
   console.log(err.toString());
@@ -31,6 +32,12 @@ gulp.task('style', function() {
     })).on('error', handleError)
     .pipe(gulp.dest('app'));
 });
+
+// gulp.task('style', function() {
+//   return gulp.src('app/**/*.less')
+//     .pipe(less())
+//     .pipe(gulp.dest('app'));
+// });
 
 gulp.task('hint', function() {
   return gulp.src('app/*.js')
