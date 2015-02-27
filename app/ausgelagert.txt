@@ -1,0 +1,40 @@
+$scope.adressen = [{
+            'name': 'Marinus Klap',
+            'street': 'Wässeri 10',
+            'zipCode': '8810',
+            'citi': 'Hirzel',
+            'phone': '+41-44 770 15 28',
+            'mobile': '+41-76 572 5 28',
+            'profilPic': 'images/marinus.jpg'
+        }, {
+            'name': 'Barbara Andres',
+            'profilPic': ''
+        }, {
+            'name': 'Anita Blumenthal'
+        }, {
+            'name': 'John Smith'
+        }, {
+            'name': 'Karin Schnider'
+        }, {
+            'name': 'Siril Kupfer'
+        }, {
+            'name': 'Daniel Näf'
+        }, {
+            'name': 'Patricia Sonnenthal'
+        }, {
+            'name': 'Sabina Dorigo'
+        }, {
+            'name': 'Rene Laubacher'
+        }, {
+            'name': 'Doerthe Glizenhirn'
+        }];*/
+
+         /*   adressApp.controller('IconCtrl', function($scope) {
+        $scope.icons = [{
+            'profilIcon': '',
+            'phoneIcon': 'phone',
+            'mobileIcon': '',
+            'bubbles2Icon': '',
+            'twitterIcon': ''
+        }]
+    });*/
