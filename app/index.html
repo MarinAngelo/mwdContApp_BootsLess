@@ -19,11 +19,11 @@
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script>
     var adressApp = angular.module('adressApp', []);
-    adressApp.controller('AdressCtrl', function($scope, $http) {
-        $http.get('adressen.json').success(function(data) {
-          $scope.adressen = data;
+    adressApp.controller('AdressCtrl', ['$scope', '$http', function(scope, http) { /*[]dipendency injection wegen minifizierung*/
+        http.get('adressen.json').success(function(data) {
+          scope.adressen = data;
         });
-    });
+    }]);
     </script>
 </head>
 
@@ -34,20 +34,15 @@
             <section class="row">
                 <div class="panel panel-default col-sm-6">
                     <div class="panel-heading">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Suche...">
-                            <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button">Go!</button>
-                                </span>
+                            <input type="text" class="form-control" placeholder="Suche..." ng-model="query">
                             <a href="profilNeu.html" type="button" class="btn btn-default pull-right" aria-label="Right Align">
                                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             </a>
-                        </div>
                     </div>
 
                     <div class="panel-body">
                         <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="adresse in adressen">
+                            <li class="list-group-item" ng-repeat="adresse in adressen | filter:query">
                                 <!-- Profilbild -->
                                 <figure class="profilIcon profilImage">
                                     <!-- <a href="profilDetails.html" class="icon">user</a> -->
