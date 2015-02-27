@@ -6287,13 +6287,61 @@ button.close {
 }
 .navbar {
   margin-bottom: 0px;
-  padding-right: 14px;
+  padding-right: 8px;
+}
+.navbar-header .btn {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
 }
 .navbar-brand {
   margin-left: 15px;
 }
-.panel-body {
-  padding: 0;
+.panel-heading {
+  padding: 8px 8px;
+}
+div.col-sm-6:nth-child(1) {
+  padding-right: 0;
+  padding-left: 0;
+}
+/*additionsl css*/
+header {
+  padding-top: 0.8em;
+  padding-bottom: 0.8em;
+}
+li.list-group-item figure {
+  display: inline;
+}
+/*positionierung der Items in list group item*/
+/*div.profilImage {
+  float: left;
+}*/
+figure.profilImage {
+  float: left;
+}
+div.profilAction {
+  float: left;
+}
+li.list-group-item {
+  overflow: hidden;
+  width: 100%;
+  height: 80px;
+}
+/*auszeichnung der Items in list group item*/
+figure {
+  width: 25%;
+}
+div.profilAction h4 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  width: 75%;
+}
+figure.profilIcon a:hover,
+div.profilAction a:hover {
+  text-decoration: none;
+}
+.img-rounded {
+  max-width: 50px;
+  height: auto;
 }
 div.panel-heading button {
   float: right;
@@ -6303,33 +6351,4 @@ div.panel-heading h3 {
 }
 .panel-heading {
   overflow: hidden;
-}
-li.list-group-item {
-  overflow: hidden;
-  padding: 0 15px 0 15px;
-}
-figure.profilIcon a:hover,
-div.profilAction a:hover,
-figure.profilIcon a:active,
-div.profilAction a:active {
-  text-decoration: none;
-}
-li.list-group-item figure {
-  float: left;
-  margin-bottom: 5px;
-}
-figure.profilImage {
-  padding-right: 10px;
-}
-figure a.icon {
-  padding-right: 15px;
-}
-figure.profilImage img {
-  max-width: 60px;
-}
-div.profilAction {
-  float: left;
-}
-div.profilAction h4 {
-  margin-top: 10px;
 }

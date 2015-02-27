@@ -23,21 +23,21 @@ gulp.task('clean', function(cb) {
   del(['dist'], cb);
 });
 
-gulp.task('style', function() {
-  return gulp.src('app/**/*.styl')
-    .pipe(plugins.stylus({
-      use: [
-        nib()
-      ]
-    })).on('error', handleError)
-    .pipe(gulp.dest('app'));
-});
-
 // gulp.task('style', function() {
-//   return gulp.src('app/**/*.less')
-//     .pipe(less())
+//   return gulp.src('app/**/*.styl')
+//     .pipe(plugins.stylus({
+//       use: [
+//         nib()
+//       ]
+//     })).on('error', handleError)
 //     .pipe(gulp.dest('app'));
 // });
+
+gulp.task('style', function() {
+  return gulp.src('app/css/**/!(*.inc).less', {base: "app"})
+    .pipe(less())
+    .pipe(gulp.dest('app'));
+});
 
 gulp.task('hint', function() {
   return gulp.src('app/*.js')
@@ -105,7 +105,8 @@ gulp.task('serve', ['connect'], function() {
 });
 
 gulp.task('watch', ['connect', 'serve', 'style'], function() {
-  gulp.watch(['app/**/*.styl'], ['style']);
+  gulp.watch(['app/**/.less'], ['style']);
+  // app/**/*.styl
   plugins.livereload.listen();
   gulp.watch([
     'app/**/*.{css,html,js}',

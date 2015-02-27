@@ -37,6 +37,6 @@
     "serve-static": "^1.7.1"
   },
   "dependencies": {
-    "gulp-less": "^2.0.3"
+    "gulp-less": "^3.0.1"
   }
 }

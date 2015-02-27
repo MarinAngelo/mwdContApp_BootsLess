@@ -42,6 +42,10 @@ div.profilAction h4 {
   margin-top: 0;
   margin-bottom: 12px;
 }
+figure.profilIcon a:hover,
+div.profilAction a:hover {
+  text-decoration: none;
+}
 div.panel-heading button {
   float: right;
 }

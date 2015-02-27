@@ -1,0 +1,59 @@
+// header
+// *************************************
+.navbar {
+    margin-bottom: 0px; // Abstand zu Panel zurücksetzen
+    padding-right: 14px; // Abstand Hamburger
+}
+.navbar-brand {
+    margin-left: 15px; // Abstand Logo
+}
+// Panel
+// *********************************************
+.panel-body {
+    padding: 0; //Padding zwischen Panel und List-Group zurücksetzen
+}
+div.panel-heading button {
+    float: right;
+}
+div.panel-heading h3 {
+    float: left;
+}
+.panel-heading {
+    overflow: hidden;//negative Auswirkungen der floats bei "profilDetailsPart.html"
+}
+// List-Group
+// *************************************************
+// List-Group Item
+li.list-group-item {
+    overflow: hidden;
+    // height: 80px;
+    padding: 0 15px 0 15px;
+}
+// Profil Bild / Icon
+figure.profilIcon a:hover,
+div.profilAction a:hover,
+figure.profilIcon a:active,
+div.profilAction a:active {
+    text-decoration: none;// icons ohne unterstreichung bei hover und active
+}
+li.list-group-item figure {//alle icons und bilder floaten
+    float: left;
+    margin-bottom: 5px;
+}
+figure.profilImage {
+  padding-right: 10px;
+}
+figure a.icon {
+  padding-right: 15px;
+}
+figure.profilImage img {
+  max-width: 60px;
+}
+
+// Auswahlbereich
+div.profilAction {
+    float: left;
+}
+div.profilAction h4 {
+    margin-top: 10px;
+}
