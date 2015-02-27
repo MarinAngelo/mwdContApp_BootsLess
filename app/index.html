@@ -18,70 +18,46 @@
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
     <script>
-    var adressApp = angular.module('adressApp', []);
-    adressApp.controller('AdressCtrl', ['$scope', '$http', function(scope, http) { /*[]dipendency injection wegen minifizierung*/
+    var adressApp = angular.module('adressApp', ['ngRoute']);
+
+    adressApp.config(function($routeProvider) {
+        $routeProvider.
+        when('/', {
+            templateUrl: 'adressListe.html',
+            controller: 'AdressListeCtrl'
+        }).
+        when('/:AdressName', {
+            templateUrl: 'adressDetail.html',
+            controller: 'AdressDetailCtrl'
+        }).
+        otherwise({
+            redirectTo: '/'
+        });
+    });
+
+    adressApp.controller('AdressListeCtrl', ['$scope', '$http', function(scope, http) { /*[]dipendency injection wegen minifizierung*/
         http.get('adressen.json').success(function(data) {
-          scope.adressen = data;
+            scope.adressen = data;
         });
     }]);
+
+    adressApp.controller('AdressDetailCtrl', function($scope, $routeParams, $http) {
+        $scope.name = $routeParams.AdressName;
+
+        $http.get('adressen.json').success(function(data) {
+
+        $scope.adresse = data.filter(function(entry) {
+                return entry.name === $scope.name;
+            })[0];
+        });
+    });
     </script>
 </head>
 
-<body ng-controller="AdressCtrl">
+<body>
     <div class="container">
         <ng-include src="'parts/header_1.html'"></ng-include>
-        <main>
-            <section class="row">
-                <div class="panel panel-default col-sm-6">
-                    <div class="panel-heading">
-                            <input type="text" class="form-control" placeholder="Suche..." ng-model="query">
-                            <a href="profilNeu.html" type="button" class="btn btn-default pull-right" aria-label="Right Align">
-                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                            </a>
-                    </div>
-
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            <li class="list-group-item" ng-repeat="adresse in adressen | filter:query">
-                                <!-- Profilbild -->
-                                <figure class="profilIcon profilImage">
-                                    <!-- <a href="profilDetails.html" class="icon">user</a> -->
-                                    <!-- Entweder Bild oder Icon -->
-                                    <a href="profilDetails.html">
-                                        <img src="{{adresse.profilPic}}" alt="marinus klap" class="img-rounded">
-                                    </a>
-                                    <!--  src="images/marinus.jpg" -->
-                                </figure>
-                                <div class="profilAction">
-                                    <!-- Profil-Name -->
-                                    <h4>{{adresse.name}}</h4>
-                                    <!-- Komunikationsmittel -->
-                                    <figure id="km1Sympol">
-                                        <a id="km1Link" class="icon" href="#">phone
-                                        </a>
-                                    </figure>
-                                    <figure id="km2Sympol">
-                                        <a id="km2Link" class="icon" href="#">mobile
-                                        </a>
-                                    </figure>
-                                    <figure id="km3Sympol">
-                                        <a id="km3Link" class="icon" href="#">bubbles2
-                                        </a>
-                                    </figure>
-                                    <figure id="km1Sympol">
-                                        <a id="km1Link" class="icon" href="#">twitter
-                                        </a>
-                                    </figure>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <ng-include src="'parts/profilDetailsPart.html'"></ng-include>
-                </div>
-            </section>
-        </main>
+        <main ng-view></main>
     </div>
     <!-- <ng-include src="'parts/footer.html'"></ng-include> -->
     <!-- build:js js.js-->
