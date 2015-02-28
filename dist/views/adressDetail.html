@@ -1,7 +1,7 @@
         <div id="detailAns">
             <div class="detailPanel panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title" contenteditable="true">Marinus Klap</h3>
+                    <h3 class="panel-title" contenteditable="true">{{adresse.name}}</h3>
                     <button class="btn btn-default">Bearbeiten</button>
                 </div>
                 <div class="panel-body">
@@ -11,22 +11,22 @@
                             <img src="../images/user.png" width="200" height="200">
                             <a class="btn btn-default" href="#">Bild wechseln</a>
                         </li>
-                        <li class="list-group-item" contenteditable="true">Wässeri 10</br>8816 Hirzel</li>
+                        <li class="list-group-item" contenteditable="true">{{adresse.street}}</br>{{adresse.zipCode}} {{adresse.citi}}</li>
                         <!--*1:wenn mehrere Adressen vorhanden ">" Symbol anzeigen und iterieren-->
                         <li class="list-group-item">
                             <a href="#"><img src="../images/mobile2.png">
                             </a>
                             <a href="#"><img src="../images/bubbles3.png">
                             </a>
-                            <span contenteditable="true">076 572 15 28</span>
+                            <span contenteditable="true">{{adresse.mobile}}</span>
                         </li>
                         <li class="list-group-item">
                             <a href="#"><img src="../images/envelop.png">
-                            </a><span contenteditable="true">marinus.klap@gmail.com</span>
+                            </a><span contenteditable="true">{{adresse.email}}</span>
                         </li>
                         <li class="list-group-item">
                             <a href="#"><img src="../images/globe.png">
-                            </a><span contenteditable="true"><a href="http://www.google.com/">www.google.com</a></span>
+                            </a><span contenteditable="true"><a href="{{adresse.websiteURL}}">{{adresse.website}}</a></span>
                         </li>
 
                         <li class="list-group-item">

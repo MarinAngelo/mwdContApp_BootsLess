@@ -17,8 +17,10 @@
     <!-- endbuild -->
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/0.5.0-rc1/angularfire.js"></script>
     <script>
-    var adressApp = angular.module('adressApp', ['ngRoute']); /*'ngResource'*/
+    var adressApp = angular.module('adressApp', ['ngRoute']); /*'ngResource' , 'firebase'*/
 
     adressApp.config(function($routeProvider) {
         $routeProvider.
