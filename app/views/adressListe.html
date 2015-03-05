@@ -1,23 +1,32 @@
     <section class="row">
         <div class="panel panel-default col-sm-6">
             <div class="panel-heading">
-                <input type="text" class="form-control" placeholder="Suche..." ng-model="query">
+                <input type="text" class="form-control" placeholder="Suche..." ng-model="query.name">
+                <!-- mit ".name sird die Suche auf das Feld "adresse.name" eingeschränkt -->
+                <select name="sort" id="sort" ng-model="sortArg">
+                    <option value="name">Absteigend</option>
+                    <option value="-name">Aufsteigend</option>
+                    <option value="-fovorit">Favoriten</option>
+                    <option value="-datum">Erstellungsdatum</option>
+                </select>
             </div>
             <div class="panel-body">
                 <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="adresse in adressen | filter:query">
+                    <li class="list-group-item" ng-repeat="adresse in adressen | filter:query | orderBy:sortArg">
                         <!-- Profilbild -->
                         <figure class="profilIcon profilImage">
-                            <!-- <a href="profilDetails.html" class="icon">user</a> -->
-                            <!-- Entweder Bild oder Icon -->
-                            <a href="#/{{adresse.name}}">
+                            <a href="#/{{adresse.name}}" class="icon" ng-hide="adresse.profilPic">user</a>
+                            <!-- Entweder Bild oder Icon: wenn "adresse.profilPic=true" Icon nicht anzeigen -->
+                            <a href="#/{{adresse.name}}" ng-show="adresse.profilPic">
                                 <img src="{{adresse.profilPic}}" alt="marinus klap" class="img-rounded">
                             </a>
                             <!--  src="images/marinus.jpg" -->
                         </figure>
                         <div class="profilAction">
                             <!-- Profil-Name -->
+                            <a href="#/{{adresse.name}}">
                             <h4>{{adresse.name}}</h4>
+                            </a>
                             <!-- Komunikationsmittel -->
                             <figure id="km1Sympol">
                                 <a id="km1Link" class="icon" href="#">phone

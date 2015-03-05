@@ -15,53 +15,10 @@
     <!-- <link rel="stylesheet" href="bower_components/bootstrap/dist/css/styles.css"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- endbuild -->
-    <script src="bower_components/angular/angular.min.js"></script>
-    <script src="bower_components/angular-route/angular-route.min.js"></script>
-    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
-    <script src="https://cdn.firebase.com/libs/angularfire/0.5.0-rc1/angularfire.js"></script>
-    <script>
-    var adressApp = angular.module('adressApp', ['ngRoute']); /*'ngResource' , 'firebase'*/
-
-    adressApp.config(function($routeProvider) {
-        $routeProvider.
-        when('/', {
-            templateUrl: 'views/adressListe.html',
-            controller: 'AdressListeCtrl'
-        }).
-        when('/adressNeu', {
-            templateUrl: 'views/adressNeu.html',
-            controller: 'AdressNeuCtrl'
-        }).
-        when('/:AdressName', {
-            templateUrl: 'views/adressDetail.html',
-            controller: 'AdressDetailCtrl'
-        }).
-        otherwise({
-            redirectTo: '/'
-        });
-    });
-
-    adressApp.controller('AdressNeuCtrl', function($scope, $routeParams, $http) {
-
-    });
-
-    adressApp.controller('AdressListeCtrl', ['$scope', '$http', function(scope, http) { /*[]dipendency injection wegen minifizierung*/
-        http.get('adressen.json').success(function(data) {
-            scope.adressen = data;
-        });
-    }]);
-
-    adressApp.controller('AdressDetailCtrl', function($scope, $routeParams, $http) {
-        $scope.name = $routeParams.AdressName;
-
-        $http.get('adressen.json').success(function(data) {
-
-            $scope.adresse = data.filter(function(entry) {
-                return entry.name === $scope.name;
-            })[0];
-        });
-    });
-    </script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
 </head>
 
 <body>

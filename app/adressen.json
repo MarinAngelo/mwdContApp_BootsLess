@@ -13,25 +13,51 @@
     "xing": "",
     "facebook": "",
     "googlePlus": "",
-    "gitHub": ""
+    "gitHub": "",
+    "favorit": true,
+    "datum": "2015-02-04T18:25:43.511Z"
+
 }, {
-    "name": "Barbara Andres"
+    "name": "Barbara Andres",
+        "favorit": true,
+    "datum": "2015-02-04T18:25:43.511Z"
 }, {
-    "name": "Anita Blumenthal"
+    "name": "Anita Blumenthal",
+    "profilPic": "images/anita.jpg",
+        "favorit": true,
+    "datum": "2015-01-04T18:25:43.511Z"
 }, {
-    "name": "John Smith"
+    "name": "John Smith",
+        "favorit": true,
+    "datum": "2015-01-02T18:25:43.511Z"
 }, {
-    "name": "Karin Schnider"
+    "name": "Karin Schnider",
+        "favorit": true,
+    "datum": "2015-02-03T18:25:43.511Z"
 }, {
-    "name": "Siril Kupfer"
+    "name": "Siril Kupfer",
+        "favorit": false,
+    "datum": "2015-02-04T16:25:43.511Z"
 }, {
-    "name": "Daniel Näf"
+    "name": "Daniel Näf",
+        "favorit": true,
+    "datum": "2015-02-04T10:25:43.511Z"
 }, {
-    "name": "Patricia Sonnenthal"
+    "name": "Patricia Sonnenthal",
+        "favorit": false,
+    "datum": "2015-02-04T18:25:42.511Z"
 }, {
-    "name": "Sabina Dorigo"
+    "name": "Sabina Dorigo",
+        "favorit": false,
+    "datum": "2015-02-05T18:25:43.511Z"
 }, {
-    "name": "Rene Laubacher"
+    "name": "Rene Laubacher",
+    "profilPic": "images/rene.jpg",
+        "favorit": false,
+    "datum": "2015-02-05T19:25:43.511Z"
 }, {
-    "name": "Doerthe Glizenhirn"
+    "name": "Doerthe Glizenhirn",
+    "profilPic": "images/doerthe.jpg",
+        "favorit": false,
+    "datum": "2015-02-04T18:25:43.511Z"
 }]

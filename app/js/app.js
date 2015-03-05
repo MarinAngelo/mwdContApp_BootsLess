@@ -1,19 +1,26 @@
 'use strict';
 
-angular.module('adressApp', ['ngRoute']);
-  app.config(function($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html'
-      })
-      .when('/profilDetails', {
-        templateUrl: 'views/profilDetails.html'
-      })
-      .when('/profilNeu', {
-        templateUrl: 'views/profilNeu.html'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+var adressApp = angular.module('adressApp', [
+  'ngRoute',
+  'adressAppControllers'
+  ]); /*'ngResource' , 'firebase'*/
 
+    adressApp.config(['$routeProvider', 
+      function($routeProvider) {
+        $routeProvider.
+        when('/', {
+            templateUrl: 'views/adressListe.html',
+            controller: 'AdressListeCtrl'
+        }).
+        when('/adressNeu', {
+            templateUrl: 'views/adressNeu.html',
+            controller: 'AdressNeuCtrl'
+        }).
+        when('/:AdressName', {
+            templateUrl: 'views/adressDetail.html',
+            controller: 'AdressDetailCtrl'
+        }).
+        otherwise({
+            redirectTo: '/'
+        });
+    }]);

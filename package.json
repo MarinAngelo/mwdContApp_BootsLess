@@ -1,19 +1,17 @@
 {
-  "name": "eb_iz501431_thomas_beispielprojekt",
+  "name": "Adress App - Beispielprojekt Kurs Mobile Web Development",
   "version": "0.0.1",
-  "description": "Thomas Beispiel",
+  "description": "Marinus Beispiel",
   "main": "index.js",
-  "scripts": {
-    "test": "gulp test"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
-    "url": "iz501431@eb-git.eb-zuerich.ch:git_repos/beispielprojekt/thomas.git"
+    "url": "iz501431@eb-git.eb-zuerich.ch:git_repos/beispielprojekt/marinus.git"
   },
   "keywords": [
     "training"
   ],
-  "author": "Thomas Gressly",
+  "author": "Marinus Klap marinus@klap.ch",
   "license": "MIT",
   "devDependencies": {
     "connect": "^3.3.1",
