@@ -2,7 +2,8 @@
 
 var adressApp = angular.module('adressApp', [
   'ngRoute',
-  'adressAppControllers'
+  'adressAppControllers',
+  'adressAppFilters'
   ]); /*'ngResource' , 'firebase'*/
 
     adressApp.config(['$routeProvider', 
@@ -16,6 +17,7 @@ var adressApp = angular.module('adressApp', [
             templateUrl: 'views/adressNeu.html',
             controller: 'AdressNeuCtrl'
         }).
+        //wenn in der URL als Parameter ein Name erscheint dann....
         when('/:AdressName', {
             templateUrl: 'views/adressDetail.html',
             controller: 'AdressDetailCtrl'
