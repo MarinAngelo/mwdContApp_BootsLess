@@ -13,8 +13,10 @@
             <div class="panel-body">
                 <ul class="list-group">
                     <li class="list-group-item" ng-repeat="adresse in adressen | filter:query | orderBy:sortArg">
+                    <!-- filter:favorit=true" bringt nur die Favoriten -->
                         <!-- Profilbild -->
                         <figure class="profilIcon profilImage">
+                        <!-- Name wird als Routeparameter an die URL angehängt -->
                             <a href="#/{{adresse.name}}" class="icon" ng-hide="adresse.profilPic">user</a>
                             <!-- Entweder Bild oder Icon: wenn "adresse.profilPic=true" Icon nicht anzeigen -->
                             <a href="#/{{adresse.name}}" ng-show="adresse.profilPic">
