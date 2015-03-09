@@ -2,7 +2,7 @@
 
 var adressApp = angular.module('adressApp', [
   'ngRoute',
-  'adressAppControllers'
+  'adressAppControllers'gul
   // 'adressAppFilters'
   ]); /*'ngResource' , 'firebase'*/
 
