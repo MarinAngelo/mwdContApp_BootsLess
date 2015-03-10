@@ -1,4 +1,4 @@
-/*'use strict';
+'use strict';
 
 angular.module('adressApp', ['ngRoute'])
 .config(['$routeProvider', 
@@ -20,4 +20,6 @@ angular.module('adressApp', ['ngRoute'])
         .otherwise({
             redirectTo: '/'
         });
-    }]);*/
+    }]);
+
+  
