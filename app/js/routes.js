@@ -1,24 +1,23 @@
-'use strict';
+/*'use strict';
 
-angular.module('adressApp')
-
+angular.module('adressApp', ['ngRoute'])
 .config(['$routeProvider', 
       function($routeProvider) {
-        $routeProvider.
-        when('/', {
+        $routeProvider
+        .when('/', {
             templateUrl: 'views/adressListe.html',
             controller: 'AdressListeCtrl'
-        }).
-        when('/adressNeu', {
+        })
+        .when('/adressNeu', {
             templateUrl: 'views/adressNeu.html',
             controller: 'AdressNeuCtrl'
-        }).
-        //wenn in der URL als Parameter ein Name erscheint dann....
-        when('/:AdressName', {
+        })
+         //wenn in der URL als Parameter ein Name erscheint dann....
+        .when('/:AdressName', {
             templateUrl: 'views/adressDetail.html',
             controller: 'AdressDetailCtrl'
-        }).
-        otherwise({
+        })
+        .otherwise({
             redirectTo: '/'
         });
-    }]);
+    }]);*/
