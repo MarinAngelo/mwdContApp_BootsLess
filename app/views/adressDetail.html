@@ -8,7 +8,10 @@
 
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <img src="../images/user.png" width="200" height="200">
+                        <figure class="profilIcon profilImage_d">
+                        <p class="icon" ng-hide="adresse.profilPic">user</p>
+                            <img src="{{adresse.profilPic}}" class="img-rounded" ng-show="adresse.profilPic">
+                            </figure>
                             <a class="btn btn-default" href="#">Bild wechseln</a>
                         </li>
                         <li class="list-group-item" contenteditable="true">{{adresse.street}}</br>{{adresse.zipCode}} {{adresse.citi}}</li>
