@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('adressApp')
+angular.module('adressApp', [adressen])
 .controller('AdressListeCtrl', ['$scope', '$http', 
     function($scope, $http, adressen) { 
     adressen.list(function(adressen) {
