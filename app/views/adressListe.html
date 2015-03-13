@@ -17,9 +17,9 @@
                         <!-- Profilbild -->
                         <figure class="profilIcon profilImage">
                         <!-- Name wird als Routeparameter an die URL angehängt -->
-                            <a href="#/{{adresse.name}}" class="icon" ng-hide="adresse.profilPic">user</a>
+                            <a href="#/{{adresse.id}}" class="icon" ng-hide="adresse.profilPic">user</a>
                             <!-- Entweder Bild oder Icon: wenn "adresse.profilPic=true" Icon nicht anzeigen -->
-                            <a href="#/{{adresse.name}}" ng-show="adresse.profilPic">
+                            <a href="#/{{adresse.id}}" ng-show="adresse.profilPic">
                                 <img src="{{adresse.profilPic}}" alt="marinus klap" class="img-rounded">
                             </a>
                             <!--  src="images/marinus.jpg" -->

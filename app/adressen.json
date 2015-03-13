@@ -1,4 +1,5 @@
 [{
+    "id": 1,
     "name": "Marinus Klap",
     "profilPic": "images/marinus.jpg",
     "street": "Wässeri 10",
@@ -18,44 +19,54 @@
     "datum": "2015-02-04T18:25:43.511Z"
 
 }, {
+    "id": 2,
     "name": "Barbara Andres",
         "favorit": true,
     "datum": "2015-02-04T18:25:43.511Z"
 }, {
+    "id": 3,
     "name": "Anita Blumenthal",
     "profilPic": "images/anita.jpg",
         "favorit": true,
     "datum": "2015-01-04T18:25:43.511Z"
 }, {
+    "id": 4,
     "name": "John Smith",
         "favorit": true,
     "datum": "2015-01-02T18:25:43.511Z"
 }, {
+    "id": 5,
     "name": "Karin Schnider",
         "favorit": true,
     "datum": "2015-02-03T18:25:43.511Z"
 }, {
+    "id": 6,
     "name": "Siril Kupfer",
         "favorit": false,
     "datum": "2015-02-04T16:25:43.511Z"
 }, {
+    "id": 7,
     "name": "Daniel Näf",
         "favorit": true,
     "datum": "2015-02-04T10:25:43.511Z"
 }, {
+    "id": 8,
     "name": "Patricia Sonnenthal",
         "favorit": false,
     "datum": "2015-02-04T18:25:42.511Z"
 }, {
+    "id": 9,
     "name": "Sabina Dorigo",
         "favorit": false,
     "datum": "2015-02-05T18:25:43.511Z"
 }, {
+    "id": 10,
     "name": "Rene Laubacher",
     "profilPic": "images/rene.jpg",
         "favorit": false,
     "datum": "2015-02-05T19:25:43.511Z"
 }, {
+    "id": 11,
     "name": "Doerthe Glizenhirn",
     "profilPic": "images/doerthe.jpg",
         "favorit": false,
