@@ -1,7 +1,7 @@
 {
-  "name": "Adress App - Beispielprojekt Kurs Mobile Web Development",
+  "name": "AdressApp",
   "version": "0.0.1",
-  "description": "Marinus Beispiel",
+  "description": "Marinus Beispielprojekt Kurs Mobile Web Development",
   "main": "index.js",
   "scripts": {},
   "repository": {
