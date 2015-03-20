@@ -1,6 +1,5 @@
 'use strict';
-//Beispiel gemäss example 39 von Curran Kelleher Screencasts
-//
+
 angular.module('adressApp')
 .controller('DetailController', ['$scope', '$routeParams', '$http',
  function($scope, $routeParams, $http) {
