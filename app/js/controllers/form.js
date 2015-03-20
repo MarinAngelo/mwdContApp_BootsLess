@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('adressApp')
-.controller('FormController', ['$scope', function($scope){
+.controller('FormController', ['$scope',
+ function($scope){
 	$scope.adresse = {
 		name: null
 	};
-	
+
 	$scope.adressen = [];
 
 	$scope.submit = function() {
