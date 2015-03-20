@@ -2,7 +2,7 @@
 //Beispiel gemäss example 39 von Curran Kelleher Screencasts
 //
 angular.module('adressApp')
-.controller('AdressDetailCtrl', ['$scope', '$routeParams', '$http',
+.controller('DetailController', ['$scope', '$routeParams', '$http',
  function($scope, $routeParams, $http) {
     //Name wird aus den Routeparameter der URL ausgelesen und übergeben
     $scope.name = $routeParams.AdressName;

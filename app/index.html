@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="adressApp">
+
 <head>
     <meta charset="utf-8">
     <title>Kontakte</title>
@@ -15,14 +16,16 @@
     <div class="container">
         <ng-include src="'parts/header_1.html'"></ng-include>
         <main ng-view></main>
+        <ng-include src="'parts/footer.html'"></ng-include>
     </div>
-    <ng-include src="'parts/footer.html'"></ng-include>
     <!-- build:js js.js-->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="js/routes.js"></script>
-    <script src="js/controllers/adressDetail.js"></script>
-    <script src="js/controllers/adressListe.js"></script>
+    <script src="js/controllers/detail.js"></script>
+    <script src="js/controllers/form.js"></script>
+    <script src="js/controllers/list.js"></script>
+    <script src="js/api/whitepages_api/src/wp-store.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbuild -->
