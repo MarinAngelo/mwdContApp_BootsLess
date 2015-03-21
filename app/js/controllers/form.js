@@ -1,17 +1,16 @@
-'use strict';
+(function(angular, WP){ //API wrapper
+
 
 angular.module('adressApp')
 .controller('FormController', ['$scope', function($scope){
-	$scope.adresse = {
-		name: null
-	};
-	
-	$scope.adressen = [];
+    $scope.newContact = WP.create.entry();
 
-	$scope.submit = function() {
-		if ($scope.adresse.name) {
-			$scope.adressen.push({name: $scope.adresse.name});
-			$scope.adresse.name = '';
-		}
-	};
+    $scope.addContact = function() {
+      WP.save($scope.newContact);
+      reload();
+      $scope.newContact = WP.create.entry();
+    };
+
 }]);
+
+}(window.angular, window.WP));

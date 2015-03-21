@@ -1,12 +1,20 @@
-'use strict';
-
+(function(angular, WP){ //API wrapper
+	
 angular.module('adressApp')
-.controller('ListController', ['$scope', '$http', 
-    function($scope, $http) { /*[]dipendency injection wegen minifizierung*/
-    	// daten anzeigen mit $http.get
-    $http.get('adressen.json').success(function(data) {
-        $scope.adressen = data;
-    });
+.controller('ListController', ['$scope', 
+    function($scope) { 
+
+    	$scope.adressen = [];
+//wenn die Site geladen wird, sollen alle adressen im Local storage angezeigt werden
+    	    function reload() {
+      WP.all.entries(function(adressen) {
+        $scope.adressen = adressen;
+      });
+    }
+    reload();
+
     $scope.sortArg = "name";
 
 }]);
+
+}(window.angular, window.WP));
