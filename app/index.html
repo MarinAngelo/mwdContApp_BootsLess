@@ -12,7 +12,8 @@
     <!-- endbuild -->
 </head>
 
-<body>
+<body ng-controller="MainController">
+
     <div class="container">
         <ng-include src="'parts/header_1.html'"></ng-include>
         <main ng-view></main>
@@ -24,8 +25,8 @@
     <script src="js/routes.js"></script>
     <script src="js/controllers/detail.js"></script>
     <script src="js/controllers/form.js"></script>
+    <script src="js/controllers/main.js"></script>
     <script src="js/controllers/list.js"></script>
-    <script src="js/api/whitepages_api/src/wp-store.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!-- endbuild -->
