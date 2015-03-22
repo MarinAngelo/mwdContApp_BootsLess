@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('adressApp')
-.controller('ListController', ['$scope', function($scope) {
+.controller('ListController', function($scope, adresser) {
 
-    // $scope.sortArg = "name"; (funktioniert hier nicht mehr)
-    // parent Scope von main.js übernommen
+   $scope.adressen = adresser.adressen;
 
-}]);
+});
