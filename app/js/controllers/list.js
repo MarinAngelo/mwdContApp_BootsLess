@@ -3,6 +3,6 @@
 angular.module('adressApp')
 .controller('ListController', function($scope, adresser) {
 
-   $scope.adressen = adresser.adressen;
+   var adressen = $scope.adressen = speicher.adressen;
 
 });
