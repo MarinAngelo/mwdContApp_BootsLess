@@ -7,7 +7,4 @@ angular.module('adressApp')
    $scope.adressen = adressService.list(); 
     	
 
-
-    // $scope.sortArg = "name";
-
 }]);
