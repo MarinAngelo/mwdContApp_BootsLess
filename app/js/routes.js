@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('adressApp', ['ngRoute'])
+angular.module('adressApp', ['ngRoute', 'adresser'])
 .config(['$routeProvider', 
       function($routeProvider) {
         $routeProvider
