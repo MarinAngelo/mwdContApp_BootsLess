@@ -1,7 +1,7 @@
 (function(angular, WP){ //API wrapper
+'use strict';
 
-
-angular.module('adressApp')
+angular.module('adressApp', [])
 .controller('FormController', ['$scope', function($scope){
     $scope.newContact = WP.create.entry();
 
