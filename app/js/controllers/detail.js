@@ -1,9 +1,9 @@
 (function(angular, WP){
-'use strict';
 
 angular.module('adressApp', [])
 .controller('DetailController', ['$scope', '$routeParams',
  function($scope, $routeParams) {
+ 	
    $scope.editing = false;
 
     $scope.toggleEditing = function() {

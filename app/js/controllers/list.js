@@ -1,5 +1,4 @@
 (function(angular, WP){ //API wrapper
-	'use strict';
 
 angular.module('adressApp', [])
 .controller('ListController', ['$scope', 
