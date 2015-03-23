@@ -12,22 +12,22 @@
             </div>
             <div class="panel-body">
                 <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="adresse in adressen | filter:query | orderBy:sortArg">
+                    <li class="list-group-item" ng-repeat="contact in contacts track by contact.key | filter:query | orderBy:sortArg">
                     <!-- filter:favorit=true" bringt nur die Favoriten -->
                         <!-- Profilbild -->
                         <figure class="profilIcon profilImage">
                         <!-- Name wird als Routeparameter an die URL angehängt -->
-                            <a href="#/{{adresse.name}}" class="icon" ng-hide="adresse.profilPic">user</a>
+                            <a href="#/{{contact.name}}" class="icon" ng-hide="adresse.profilPic">user</a>
                             <!-- Entweder Bild oder Icon: wenn "adresse.profilPic=true" Icon nicht anzeigen -->
-                            <a href="#/{{adresse.name}}" ng-show="adresse.profilPic">
+                            <a href="#/{{contact.name}}" ng-show="adresse.profilPic">
                                 <img src="{{adresse.profilPic}}" alt="marinus klap" class="img-rounded">
                             </a>
                             <!--  src="images/marinus.jpg" -->
                         </figure>
                         <div class="profilAction">
                             <!-- Profil-Name -->
-                            <a href="#/{{adresse.name}}">
-                            <h4>{{adresse.name}}</h4>
+                            <a href="#/{{contact.name}}">
+                            <h4>{{contact.name}}</h4>
                             </a>
                             <!-- Komunikationsmittel -->
                             <figure id="km1Sympol">

@@ -4,6 +4,14 @@ angular.module('adressApp')
 .controller('DetailController', ['$scope', '$routeParams',
  function($scope, $routeParams) {
 
+ 	$scope.currentDetail = null;
+    $scope.setDetail = function(contact) {
+      $scope.currentDetail = contact;
+    };
+    $scope.clearDetail = function() {
+      $scope.currentDetail = null;
+    };
+
  	  $scope.removeContact = function(contact) {
       WP.del(contact);
       reload();
