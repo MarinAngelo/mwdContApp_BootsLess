@@ -1,6 +1,6 @@
 (function(angular, WP){ //API wrapper
-
-angular.module('adressApp', [])
+	
+angular.module('adressApp')
 .controller('ListController', ['$scope', 
     function($scope) { 
 
@@ -11,10 +11,7 @@ angular.module('adressApp', [])
         $scope.adressen = adressen;
       });
     }
-    
     reload();
-
-    // $scope.sortArg = 'name';
 
 }]);
 

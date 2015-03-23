@@ -1,6 +1,7 @@
 (function(angular, WP){ //API wrapper
 
-angular.module('adressApp', [])
+
+angular.module('adressApp')
 .controller('FormController', ['$scope',
  function($scope){
  	

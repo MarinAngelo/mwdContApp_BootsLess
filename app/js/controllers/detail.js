@@ -1,10 +1,15 @@
-(function(angular, WP){
+(function(angular, WP){ //API wrapper
 
-angular.module('adressApp', [])
+angular.module('adressApp')
 .controller('DetailController', ['$scope', '$routeParams',
  function($scope, $routeParams) {
- 	
-   $scope.editing = false;
+
+ 	  $scope.removeContact = function(contact) {
+      WP.del(contact);
+      reload();
+    };
+
+    $scope.editing = false;
 
     $scope.toggleEditing = function() {
       if($scope.editing) {
@@ -12,6 +17,7 @@ angular.module('adressApp', [])
       }
       $scope.editing = !$scope.editing;
     };
+
     function reload() {
       if($scope.currentDetail) {
         WP.retrieve.addresses($scope.currentDetail, function(addresses) {
@@ -40,6 +46,7 @@ angular.module('adressApp', [])
     $scope.addAddress = function() {
       $scope.newAddresses.push(WP.create.address());
     };
+
 }]);
 
 }(window.angular, window.WP));
