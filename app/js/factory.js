@@ -1,6 +1,4 @@
-'use strict';
-
-angular.module('adressApp.services', [])
+angular.module('adressApp', [])
 .factory('adresser', function(){
 
 	var adressen = [
