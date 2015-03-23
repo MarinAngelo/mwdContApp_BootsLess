@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('adressApp')
-.controller('ListController', ['$scope', 'adressen', 
-    function($scope, adressen) { 
-    adressen.list(function(adressen) {
+.controller('ListController', ['$scope', 'adressService', 
+    function($scope, adressService) { 
+    adressService.list(function(adressen) {
     	$scope.adressen = adressen;
     });
 
