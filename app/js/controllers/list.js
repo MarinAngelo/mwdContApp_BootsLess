@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('adressApp')
-.controller('ListController', function($scope, adresser) {
+angular.module('adressApp' ['adressApp.services'])
+.controller('ListController', ['$scope', 'adresser', function($scope, adresser) {
 
-   var adressen = $scope.adressen = speicher.adressen;
+   $scope.adressen = adresser.all();
 
-});
+}]);
