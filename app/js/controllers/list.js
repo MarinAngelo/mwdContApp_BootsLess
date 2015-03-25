@@ -5,6 +5,7 @@ angular.module('adressApp')
 $scope.currentDetail = null;
     $scope.setDetail = function(contact) {
       $scope.currentDetail = contact;
+      $location.path('views/adressNeu.html');
     };
     $scope.clearDetail = function() {
       $scope.currentDetail = null;

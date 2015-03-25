@@ -1,13 +1,11 @@
-(function(angular, WP){ //API wrapper
-
 angular.module('adressApp')
 .controller('DetailController', ['$scope', '$routeParams',
  function($scope, $routeParams) {
 
- 	$scope.currentDetail = null;
-    $scope.setDetail = function(contact) {
+    $scope.setDetail = function($routeParams) {
       $scope.currentDetail = contact;
     };
+
     $scope.clearDetail = function() {
       $scope.currentDetail = null;
     };
@@ -56,5 +54,3 @@ angular.module('adressApp')
     };
 
 }]);
-
-}(window.angular, window.WP));
