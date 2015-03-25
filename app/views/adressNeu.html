@@ -1,4 +1,4 @@
-        <form ng-submit="submit()">
+        <form ng-submit="addContact()">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
@@ -33,7 +33,7 @@
                             <!--Name, Adresse-->
                             <legend>Anschrift</legend>
                             <div class="form-group">
-                                <input type="text" class="form-control" name="name" id="name" value="" placeholder="Name" ng-model="adresse.name">
+                                <input type="text" class="form-control" name="name" id="name" value="" placeholder="Name" ng-model="newContact.name">
                             </div>
                             <div class="form-group">
                                 <textarea rows="2" cols="20" name="adresse" class="form-control" id="adresse" value="" placeholder="Adresse"></textarea>

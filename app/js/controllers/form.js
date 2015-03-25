@@ -1,6 +1,3 @@
-(function(angular, WP){ //API wrapper
-
-
 angular.module('adressApp')
 .controller('FormController', ['$scope',
  function($scope){
@@ -14,6 +11,7 @@ angular.module('adressApp')
     };
 
     $scope.newContact = WP.create.entry();
+    $scope.editing = null;
 
     $scope.addContact = function() {
       WP.save($scope.newContact);
@@ -22,5 +20,3 @@ angular.module('adressApp')
     };
 
 }]);
-
-}(window.angular, window.WP));
