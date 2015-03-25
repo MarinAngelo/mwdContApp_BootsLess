@@ -8,26 +8,36 @@
     <!-- build:css styles.css -->
     <link rel="stylesheet" href="css/icon_font.css">
     <link rel="stylesheet" href="css/styles.css">
+    <!-- ng material -->
+    <link rel="stylesheet" href="app/bower_components/angular-material/angular-material.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- endbuild -->
 </head>
 
 <body>
     <div class="container">
+    <div layout="column" layout-fill>
+    <md-toolbar>
         <ng-include src="'parts/header_1.html'"></ng-include>
+        </md-toolbar>
+        </div>
         <main ng-view></main>
         <ng-include src="'parts/footer.html'"></ng-include>
     </div>
     <!-- build:js js.js-->
     <script src="bower_components/angular/angular.js"></script>
+    <!-- ng material -->
+    <script src="app/bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="js/routes.js"></script>
+    <!-- ng material -->
+    <script src="app/bower_components/angular-material/angular-material.js"></script>
     <script src="js/controllers/detail.js"></script>
     <script src="js/controllers/form.js"></script>
     <script src="js/controllers/list.js"></script>
-    <script src="js/api/whitepages_api/build/wp-store.combined.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="js/api/whitepages_api/build/wp-store.combined.js"></script>
     <!-- endbuild -->
 </body>
 

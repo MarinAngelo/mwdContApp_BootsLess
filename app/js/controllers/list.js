@@ -1,5 +1,3 @@
-(function(angular, WP){ //API wrapper
-	
 angular.module('adressApp')
 .controller('ListController', ['$scope', 
     function($scope) { 
@@ -12,15 +10,13 @@ $scope.currentDetail = null;
       $scope.currentDetail = null;
     };
 
-    	$scope.adressen = [];
+    	$scope.contacts = [];
 //wenn die Site geladen wird, sollen alle adressen im Local storage angezeigt werden
     	    function reload() {
-      WP.all.entries(function(adressen) {
-        $scope.adressen = adressen;
+      WP.all.entries(function(contacts) {
+        $scope.contacts = contacts;
       });
     }
     reload();
 
 }]);
-
-}(window.angular, window.WP));
