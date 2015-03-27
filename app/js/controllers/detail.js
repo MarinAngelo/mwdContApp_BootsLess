@@ -1,23 +1,24 @@
 angular.module('adressApp')
     .controller('DetailController', ['$scope', '$routeParams',
         function($scope, $routeParams) {
+            // aus parent controller projekt thomas
+            $scope.currentDetail = null;
 
             // $scope.setDetail = function(contact) {
-            //   $scope.currentDetail = contact;
+            //     $scope.currentDetail = contact;
             // };
-            $scope.currentDetail = null;
-            $scope.currentDetail = $routeParams.AdressName;
-
             // $scope.clearDetail = function() {
             //     $scope.currentDetail = null;
             // };
-
-            $scope.removeContact = function(contact) {
-                WP.del(contact);
-                reload();
-            };
+            contact = $routeParams.AdressName;
+            $scope.currentDetail = contact;
 
             $scope.editing = false;
+
+            // $scope.removeContact = function(contact) {
+            //     WP.del(contact);
+            //     reload();
+            // };
 
             $scope.toggleEditing = function() {
                 if ($scope.editing) {
