@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('adressApp', ['ngRoute'])
+angular.module('adressApp')
 .config(['$routeProvider', 
       function($routeProvider) {
         $routeProvider
@@ -24,5 +24,3 @@ angular.module('adressApp', ['ngRoute'])
             redirectTo: '/'
         });
     }]);
-
-  
