@@ -1,49 +1,47 @@
-        <div id="detailAns">
-            <div class="detailPanel panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title" contenteditable="true">{{currentDetail.name}}</h3>
-                    <button class="btn btn-default">Bearbeiten</button>
-                </div>
-                <div class="panel-body">
-
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                        <figure class="profilIcon profilImage_d">
-                        <p class="icon" ng-hide="adresse.profilPic">user</p>
-                            <img src="{{adresse.profilPic}}" class="img-rounded" ng-show="adresse.profilPic">
-                            </figure>
-                            <a class="btn btn-default" href="#">Bild wechseln</a>
-                        </li>
-                        <li class="list-group-item" contenteditable="true">{{adresse.street}}</br>{{adresse.zipCode}} {{adresse.citi}}</li>
-                        <!--*1:wenn mehrere Adressen vorhanden ">" Symbol anzeigen und iterieren-->
-                        <li class="list-group-item">
-                            <a href="#"><img src="../images/mobile2.png">
-                            </a>
-                            <a href="#"><img src="../images/bubbles3.png">
-                            </a>
-                            <span contenteditable="true">{{adresse.mobile}}</span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#"><img src="../images/envelop.png">
-                            </a><span contenteditable="true">{{adresse.email}}</span>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#"><img src="../images/globe.png">
-                            </a><span contenteditable="true"><a href="{{adresse.websiteURL}}">{{adresse.website}}</a></span>
-                        </li>
-
-                        <li class="list-group-item">
-                            <a href="#"><img src="../images/skype.png">
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#"><img src="../images/tumblr.png">
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#"><img src="../images/facebook.png">
-                            </a>bla bla</li>
-                    </ul>
-                </div>
-            </div>
+<div id="detailAns">
+    <div class="detailPanel panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" contenteditable="true">{{currentDetail.name}}</h3>
+            <button class="btn btn-default">Bearbeiten</button>
         </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <figure class="profilIcon profilImage_d">
+                        <p class="icon" ng-hide="currentDetail.profilPic">user</p>
+                        <img src="{{currentDetail.profilPic}}" class="img-rounded" ng-show="currentDetail.profilPic">
+                    </figure>
+                    <a class="btn btn-default" href="#">Bild wechseln</a>
+                </li>
+                <li class="list-group-item" contenteditable="true">{{currentDetail.street}}</br>{{currentDetail.zipCode}} {{currentDetail.citi}}</li>
+                <!--*1:wenn mehrere currentDetailn vorhanden ">" Symbol anzeigen und iterieren-->
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/mobile2.png">
+                    </a>
+                    <a href="#"><img src="../images/bubbles3.png">
+                    </a>
+                    <span contenteditable="true">{{currentDetail.mobile}}</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/envelop.png">
+                    </a><span contenteditable="true">{{currentDetail.email}}</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/globe.png">
+                    </a><span contenteditable="true"><a href="{{currentDetail.websiteURL}}">{{currentDetail.website}}</a></span>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/skype.png">
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/tumblr.png">
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/facebook.png">
+                    </a>bla bla</li>
+            </ul>
+        </div>
+    </div>
+</div>

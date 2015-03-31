@@ -10,8 +10,11 @@ angular.module('adressApp')
             // $scope.clearDetail = function() {
             //     $scope.currentDetail = null;
             // };
-            contact = $routeParams.AdressName;
-            $scope.currentDetail = contact;
+            WP.get($routeParams.ContactKey, function(contact) {
+                $scope.currentDetail = contact;
+            });
+
+            console.log($routeParams, $scope.currentDetail);
 
             $scope.editing = false;
 
