@@ -1,3 +1,5 @@
+'use strict'
+
 angular.module('adressApp')
     .controller('DetailController', ['$scope', '$routeParams',
         function($scope, $routeParams) {
@@ -66,6 +68,7 @@ angular.module('adressApp')
             $scope.saveImageURL = function(url) {
                 $scope.currentDetail.imageURL = url;
             };
+
 
         }
     ]);
