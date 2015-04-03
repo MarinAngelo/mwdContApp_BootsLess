@@ -2,7 +2,16 @@
     <div class="detailPanel panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title" contenteditable="true">{{currentDetail.name}}</h3>
-            <button class="btn btn-default">Bearbeiten</button>
+            <nav>
+               <!-- Kontakt löschen -->
+            <button ng-click="removeContact(currentDetail)" type="button" id="remove" class="icon" title="löschen">remove2</button>
+            <!-- exportieren -->
+            <button ng-click="export()" type="button" id="arrow-up-right" class="icon" title="export">arrow-up-right</button>
+            <!-- editieren / speichern -->
+            <button ng-click="toggleEditing()" type="button" id="edit" class="icon" title="bearbeiten / speichern">{{editing ? 'Speichern' : 'Bearbeiten'}}</button>
+            <!-- zurück zur Liste -->
+            <button ng-click="clearDetail()" type="button" id="back" class="icon" title="zurück">backward2</button>
+         </nav>
         </div>
         <div class="panel-body">
             <ul class="list-group">
@@ -11,10 +20,28 @@
                         <p class="icon" ng-hide="currentDetail.profilPic">user</p>
                         <img src="{{currentDetail.profilPic}}" class="img-rounded" ng-show="currentDetail.profilPic">
                     </figure>
-                    <a class="btn btn-default" href="#">Bild wechseln</a>
+                    <!-- Bild Hochladen -->
+                    <button ng-click="expression" class="icon">upload2</button>
                 </li>
+            </ul>
+            <h3>Addresses</h3>
+            <fieldset ng-repeat="address in addresses">
+              <legend>
+                <div ng-if="editing">
+                  <input ng-model="address.label" />
+                </div>
+                <div ng-if="!editing">{{address.label}}</div>
+              </legend>
+              <input ng-readonly="!editing" ng-model="address.street" class="form-control" placeholder="Straße" />
+              <input ng-readonly="!editing" ng-model="address.number" class="form-control" placeholder="Nummer" />
+              <input ng-readonly="!editing" ng-model="address.zip" class="form-control" placeholder="PLZ" />
+              <input ng-readonly="!editing" ng-model="address.city" class="form-control" placeholder="Ort" />
+              <input ng-readonly="!editing" ng-model="address.country" class="form-control" placeholder="Land" />
+            </fieldset>
+            <button ng-hide="!editing" ng-click="addAddress()">New Address</button>
+            <!-- **************************************************************
                 <li class="list-group-item" contenteditable="true">{{currentDetail.street}}</br>{{currentDetail.zipCode}} {{currentDetail.citi}}</li>
-                <!--*1:wenn mehrere currentDetailn vorhanden ">" Symbol anzeigen und iterieren-->
+                <!--*1:wenn mehrere currentDetailn vorhanden ">" Symbol anzeigen und iterieren
                 <li class="list-group-item">
                     <a href="#"><img src="../images/mobile2.png">
                     </a>
@@ -41,7 +68,7 @@
                 <li class="list-group-item">
                     <a href="#"><img src="../images/facebook.png">
                     </a>bla bla</li>
-            </ul>
+            </ul> -->
         </div>
     </div>
 </div>

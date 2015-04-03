@@ -4,24 +4,19 @@ angular.module('adressApp')
             // aus parent controller projekt thomas
             $scope.currentDetail = null;
 
-            // $scope.setDetail = function(contact) {
-            //     $scope.currentDetail = contact;
-            // };
-            // $scope.clearDetail = function() {
-            //     $scope.currentDetail = null;
-            // };
             WP.get($routeParams.ContactKey, function(contact) {
                 $scope.currentDetail = contact;
             });
 
-            console.log($routeParams, $scope.currentDetail);
+            $scope.clearDetail = function() {
+                $scope.currentDetail = null;
+                // redirectTo: '/';
+                $location.path('adressListe.html');
+                $location.replace();
+            };
 
             $scope.editing = false;
 
-            // $scope.removeContact = function(contact) {
-            //     WP.del(contact);
-            //     reload();
-            // };
 
             $scope.toggleEditing = function() {
                 if ($scope.editing) {
@@ -44,8 +39,13 @@ angular.module('adressApp')
                     $scope.editing = false;
                 }
                 $scope.newAddresses = [];
-            }
+            };
             reload();
+
+            $scope.removeContact = function(currentDetail) {
+                WP.del(currentDetail);
+                reload();
+            };
 
             function save() {
                 $scope.addresses.forEach(WP.save.bind(WP));
@@ -57,6 +57,14 @@ angular.module('adressApp')
 
             $scope.addAddress = function() {
                 $scope.newAddresses.push(WP.create.address());
+            };
+
+            $scope.addPhone = function() {
+                $scope.phones.push(WP.create.phone());
+            };
+
+            $scope.saveImageURL = function(url) {
+                $scope.currentDetail.imageURL = url;
             };
 
         }
