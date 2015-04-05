@@ -28,9 +28,5 @@ angular.module('adressApp')
                     reader.readAsDataURL(file);
                 });
             }
-
-                $scope.saveImageURL = function(url) {
-                $scope.currentDetail.imageURL = url;
-            };
         };
     });
