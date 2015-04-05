@@ -4,13 +4,22 @@
             <h3 class="panel-title" contenteditable="true">{{currentDetail.name}}</h3>
             <nav>
                 <!-- Kontakt löschen -->
-                <button ng-click="removeContact(currentDetail)" type="button" id="remove" class="icon" title="löschen">remove2</button>
+                <button ng-click="removeContact(currentDetail)" type="button" id="remove" class="btn btn-sm">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> del
+                </button>
+                <!-- <a id="" class="icon" href="#" ng-click="removeContact(currentDetail)">remove-2</a> -->
                 <!-- exportieren -->
-                <button ng-click="export()" type="button" id="arrow-up-right" class="icon" title="export">arrow-up-right</button>
+                <button ng-click="exportVcard()" type="button" id="arrow-up-right" class="btn btn-sm" title="export">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> export
+                </button>
                 <!-- editieren / speichern -->
-                <button ng-click="toggleEditing()" type="button" id="edit" class="icon" title="bearbeiten / speichern">{{editing ? 'Speichern' : 'Bearbeiten'}}</button>
+                <button ng-click="toggleEditing()" type="button" id="edit" class="btn btn-sm" title="bearbeiten / speichern">
+                {{editing ? 'save' : 'edit'}}
+                </button>
                 <!-- zurück zur Liste -->
-                <button ng-click="clearDetail()" type="button" id="back" class="icon" title="zurück">backward2</button>
+                <button ng-click="clearDetail()" type="button" id="back" class="btn btn-sm" title="zurück">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> back
+                </button>
             </nav>
         </div>
         <div class="panel-body">
@@ -24,7 +33,7 @@
                     <button ng-click="expression" class="icon">upload2</button>
                 </li> -->
                 <li class="list-group-item">
-                    <img class="img-responsive img-circle" ng-src="{{currentDetail.imageURL || './images/user.png'}}" width="1425" height="1425" alt="Jane Doe" class="photo" />
+                    <img class="img-responsive img-circle" ng-src="{{currentDetail.imageURL || './images/user.png'}}" width="200" height="200" alt="avatar" class="photo" />
                     <image-loader ng-if="editing" on-image="saveImageURL(url)"></image-loader>
                 </li>
             </ul>
