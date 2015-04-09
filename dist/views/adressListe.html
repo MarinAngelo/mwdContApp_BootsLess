@@ -1,0 +1,64 @@
+<section class="row">
+    <div class="panel panel-default col-sm-6">
+        <div class="panel-heading">
+            <form ng-submit="addContact()">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" id="name" value="" placeholder="Name" ng-model="newContact.name">
+                </div>
+                <input type="submit" value="add Contact">
+            </form>
+            <input type="text" class="form-control" placeholder="Suche..." ng-model="query.name">
+            <!-- mit ".name sird die Suche auf das Feld "adresse.name" eingeschränkt -->
+            <select name="sort" id="sort" ng-model="sortArg">
+                <option value="name">Absteigend</option>
+                <option value="-name">Aufsteigend</option>
+                <option value="-fovorit">Favoriten</option>
+                <option value="-datum">Erstellungsdatum</option>
+            </select>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="contact in contacts track by contact.key | filter:query">
+                    <!-- | orderBy:sortArg" -->
+                    <!-- filter:favorit=true" bringt nur die Favoriten -->
+                    <!-- Profilbild -->
+                    <figure class="profilIcon profilImage">
+                        <!-- Name wird als Routeparameter an die URL angehängt -->
+                        <a ng-href="#/{{contact.key}}" class="icon" ng-hide="adresse.profilPic">user</a>
+                        <!-- Entweder Bild oder Icon: wenn "adresse.profilPic=true" Icon nicht anzeigen -->
+                        <a ng-href="#/{{contact.key}}" ng-show="adresse.profilPic">
+                            <img src="{{adresse.profilPic}}" alt="marinus klap" class="img-rounded">
+                        </a>
+                        <!--  src="images/marinus.jpg" -->
+                    </figure>
+                    <div class="profilAction">
+                        <!-- Profil-Name -->
+                        <a ng-href="#/{{contact.key}}">
+                            <h4>{{contact.name}}</h4>
+                        </a>
+                        <!-- Komunikationsmittel -->
+                        <figure id="km1Sympol">
+                            <a id="km1Link" class="icon" href="#">phone
+                                        </a>
+                        </figure>
+                        <figure id="km2Sympol">
+                            <a id="km2Link" class="icon" href="#">mobile
+                                        </a>
+                        </figure>
+                        <figure id="km3Sympol">
+                            <a id="km3Link" class="icon" href="#">bubbles2
+                                        </a>
+                        </figure>
+                        <figure id="km1Sympol">
+                            <a id="km1Link" class="icon" href="#">twitter
+                                        </a>
+                        </figure>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <ng-include src="'adressDetail.html'"></ng-include>
+    </div>
+</section>

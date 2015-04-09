@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>wp-store API Reference</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <h1 id="wp-store-api-reference">wp-store API Reference</h1>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>
+<span class="hljs-comment">/*jshint jasmine: true, camelcase: false*/</span>
+<span class="hljs-comment">/*global WP*/</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">clearStorage</span><span class="hljs-params">()</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Reset changes to the API (custom properties, event handlers)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	WP.reset();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Reset data</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	<span class="hljs-built_in">window</span>.localStorage.clear();
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <h2 id="basic-address-storage">Basic address storage</h2>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'Basic usage'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+	afterAll(clearStorage);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <h3 id="create-addresses">Create addresses</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'stores addresses'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Create entries with <code>WP.create</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">var</span> entry = WP.create(<span class="hljs-string">'entry'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Created entries have an ID field named <code>key</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(entry.key).toBeDefined();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>To set fields, just use properties</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		entry.name = <span class="hljs-string">'Thomas Gressly'</span>;
+		expect(entry.name).toBe(<span class="hljs-string">'Thomas Gressly'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>All fields should be defined and have a default value</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(entry.is_company).toBe(<span class="hljs-literal">false</span>);
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <h3 id="saving">Saving</h3>
+<p>Saving happens only explicitly for objects not in a collection</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'saves only explicitly'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p><code>WP.all</code> retrieves all records of a type.
+<code>entries</code> is an array of all retrieved entries.</p>
+<p>The API is asynchronous in case the backing storage mechanism is.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.all(<span class="hljs-string">'entry'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(entries)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-12">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-12">&#182;</a>
+              </div>
+              <p>Nothing was saved yet because we did not call save before</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			expect(entries.length).toBe(<span class="hljs-number">0</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-13">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-13">&#182;</a>
+              </div>
+              <p>Create a new entry…</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">var</span> entry = WP.create(<span class="hljs-string">'entry'</span>);
+			entry.name = <span class="hljs-string">'Thomas Gressly'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-14">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-14">&#182;</a>
+              </div>
+              <p>…and save it using <code>WP.save</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			WP.save(entry);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-15">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-15">&#182;</a>
+              </div>
+              <p>Now the record is returned when retrieving</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			WP.all(<span class="hljs-string">'entry'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(entries)</span> </span>{
+				expect(entries.length).toBe(<span class="hljs-number">1</span>);
+				done();
+			});
+		});
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-16">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-16">&#182;</a>
+              </div>
+              <h3 id="retrieving-items">Retrieving items</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'retrieves stored addresses'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-17">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-17">&#182;</a>
+              </div>
+              <p>Sugar for <code>WP.all(&#39;entries&#39;, …)</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.all.entries(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(entries)</span> </span>{
+			expect(entries.length).toBe(<span class="hljs-number">1</span>);
+			<span class="hljs-keyword">var</span> entry = entries[<span class="hljs-number">0</span>];
+			expect(entry.name).toBe(<span class="hljs-string">'Thomas Gressly'</span>);
+			done();
+		});
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-18">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-18">&#182;</a>
+              </div>
+              <h3 id="retrieve-a-single-item">Retrieve a single item</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'allows retrieval of a single item'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-19">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-19">&#182;</a>
+              </div>
+              <p>Sugar for <code>WP.create(&#39;entry&#39;)</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		<span class="hljs-keyword">var</span> key = entry.key;
+		entry.name = <span class="hljs-string">"Apple"</span>;
+		entry.is_company = <span class="hljs-literal">true</span>;
+		WP.save(entry);
+		entry = <span class="hljs-literal">null</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-20">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-20">&#182;</a>
+              </div>
+              <p><code>WP.get</code> retrieves an item by its ID</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.get(key, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(entry)</span> </span>{
+			expect(entry.name).toBe(<span class="hljs-string">'Apple'</span>);
+			done();
+		});
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-21">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-21">&#182;</a>
+              </div>
+              <h3 id="deleting-an-item">Deleting an item</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'can delete items'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{
+		WP.all.entries(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(entries)</span> </span>{
+			expect(entries.length).toBe(<span class="hljs-number">2</span>);
+			<span class="hljs-keyword">var</span> thomas = entries[<span class="hljs-number">0</span>];
+			expect(thomas.name).toBe(<span class="hljs-string">'Thomas Gressly'</span>);
+			<span class="hljs-keyword">var</span> apple = entries[<span class="hljs-number">1</span>];
+			expect(apple.name).toBe(<span class="hljs-string">'Apple'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-22">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-22">&#182;</a>
+              </div>
+              <p>You can delete objects directly…</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			WP.del(thomas);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-23">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-23">&#182;</a>
+              </div>
+              <p>…or through their key</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			WP.del(apple.key);
+			WP.all.entries(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(entries)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-24">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-24">&#182;</a>
+              </div>
+              <p>Verify deletion</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				expect(entries.length).toBe(<span class="hljs-number">0</span>);
+				done();
+			});
+		});
+	});
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <h2 id="working-with-collections">Working with collections</h2>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'Collections'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+	beforeEach(clearStorage);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-26">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-26">&#182;</a>
+              </div>
+              <h3 id="basic-collection-handling">Basic collection handling</h3>
+<p>Addresses are items of type “address” in the collection “addresses” of items of type “entry”</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'can add elements'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-27">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-27">&#182;</a>
+              </div>
+              <p><code>WP.retrieve</code> gets all elements from a collection</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.retrieve(<span class="hljs-string">'addresses'</span>, entry, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(addresses)</span> </span>{
+			expect(addresses.length).toBe(<span class="hljs-number">0</span>);
+			<span class="hljs-keyword">var</span> address = WP.create.address();
+			address.label = <span class="hljs-string">'work'</span>;
+			address.address = <span class="hljs-string">'Technopark'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-28">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-28">&#182;</a>
+              </div>
+              <p>Use <code>WP.add</code> to add an element to a collection</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			WP.add(<span class="hljs-string">'addresses'</span>, entry, address);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-29">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-29">&#182;</a>
+              </div>
+              <p>Sugar for <code>WP.retrieve(&#39;addresses&#39;, …)</code></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			WP.retrieve.addresses(entry, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(addresses)</span> </span>{
+				expect(addresses.length).toBe(<span class="hljs-number">1</span>);
+				expect(addresses[<span class="hljs-number">0</span>].label).toBe(<span class="hljs-string">'work'</span>);
+				expect(addresses[<span class="hljs-number">0</span>].address).toBe(<span class="hljs-string">'Technopark'</span>);
+				done();
+			});
+		});
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-30">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-30">&#182;</a>
+              </div>
+              <h3 id="autosave-behaviour-of-collections">Autosave behaviour of collections</h3>
+<p>Items are being saved automatically as soon as they’re added to a collection.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'automatically saves items'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		<span class="hljs-keyword">var</span> address = WP.create.address();
+		address.label = <span class="hljs-string">'work'</span>;
+		address.address = <span class="hljs-string">'Technopark'</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-31">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-31">&#182;</a>
+              </div>
+              <p>Note: we’re not using <code>WP.retrieve</code> here.
+This way we get all addresses, not just the ones belonging to a single item.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.all.addresses(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(addresses)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-32">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-32">&#182;</a>
+              </div>
+              <p>Not yet saved</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			expect(addresses.length).toBe(<span class="hljs-number">0</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-33">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-33">&#182;</a>
+              </div>
+              <p>Saving</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			WP.add(<span class="hljs-string">'addresses'</span>, entry, address);
+			WP.all.addresses(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(addresses)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-34">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-34">&#182;</a>
+              </div>
+              <p>Saved</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				expect(addresses.length).toBe(<span class="hljs-number">1</span>);
+				expect(addresses[<span class="hljs-number">0</span>].label).toBe(<span class="hljs-string">'work'</span>);
+				expect(addresses[<span class="hljs-number">0</span>].address).toBe(<span class="hljs-string">'Technopark'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-35">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-35">&#182;</a>
+              </div>
+              <p>Note that this does not automatically save the entry, just the collection items</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>				WP.all.entries(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(entries)</span> </span>{
+					expect(entries).not.toContain(entry);
+					expect(entries.length).toBe(<span class="hljs-number">0</span>);
+					done();
+				});
+			});
+		});
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-36">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-36">&#182;</a>
+              </div>
+              <h3 id="other-collections-exist">Other collections exist</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'exists for phones, too'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		expect(entry.phones).toBeDefined();
+		<span class="hljs-keyword">var</span> phone = WP.create.phone();
+		phone.label = <span class="hljs-string">'work'</span>;
+		phone.number = <span class="hljs-string">'(555) 33 44'</span>;
+		WP.add.phone(entry, phone);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-37">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-37">&#182;</a>
+              </div>
+              <p>The fields themselves only contain the items’ keys</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(entry.phones).toContain(phone.key);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-38">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-38">&#182;</a>
+              </div>
+              <p>Use <code>WP.retrieve</code> to get the actual items</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.retrieve.phones(entry, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(phones)</span> </span>{
+			expect(phones).toContain(phone);
+			done();
+		});
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-39">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-39">&#182;</a>
+              </div>
+              <h3 id="removing-items">Removing items</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'exists for phones, too'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		expect(entry.phones).toBeDefined();
+		<span class="hljs-keyword">var</span> phone = WP.create.phone();
+		WP.add.phone(entry, phone);
+		expect(entry.phones).toContain(phone.key);
+		WP.retrieve.phones(entry, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(phones)</span> </span>{
+			expect(phones).toContain(phone);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-40">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-40">&#182;</a>
+              </div>
+              <p><code>WP.remove</code> also deletes the item that is being removed</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			WP.remove.phone(entry, phone);
+			WP.retrieve.phones(entry, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(phones)</span> </span>{
+				expect(phones).not.toContain(phone);
+				expect(phones.length).toBe(<span class="hljs-number">0</span>);
+				done();
+			});
+		});
+	});
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-41">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-41">&#182;</a>
+              </div>
+              <h2 id="events">Events</h2>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'Observation'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+	beforeEach(clearStorage);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-42">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-42">&#182;</a>
+              </div>
+              <h3 id="save-notifications">Save notifications</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'makes it possible to determine when an item has been saved'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">var</span> handler = jasmine.createSpy(<span class="hljs-string">'saved'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-43">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-43">&#182;</a>
+              </div>
+              <h3 id="use-on-to-register-an-event-handler">Use <code>on</code> to register an event handler</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.on(<span class="hljs-string">'saved'</span>, handler);
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		<span class="hljs-keyword">var</span> phone = WP.create.phone();
+		expect(handler).not.toHaveBeenCalled();
+		WP.add.phone(entry, phone);
+		expect(handler).toHaveBeenCalledWith(<span class="hljs-string">'saved'</span>, phone);
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-44">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-44">&#182;</a>
+              </div>
+              <h3 id="collection-notifications">Collection notifications</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'detects collection changes'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">var</span> handler = jasmine.createSpy(<span class="hljs-string">'added'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-45">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-45">&#182;</a>
+              </div>
+              <p>Use the pipe (“|”) to listen to multiple events at once</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.on(<span class="hljs-string">'added|saved|removed|deleted'</span>, handler);
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		<span class="hljs-keyword">var</span> phone = WP.create.phone();
+		WP.add.phone(entry, phone);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-46">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-46">&#182;</a>
+              </div>
+              <p>For technical reasons, only the key is passed to the event handler</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(handler).toHaveBeenCalledWith(<span class="hljs-string">'added'</span>, entry, phone.key);
+		expect(handler).toHaveBeenCalledWith(<span class="hljs-string">'saved'</span>, phone);
+		expect(handler.calls.count()).toBe(<span class="hljs-number">2</span>);
+		WP.remove.phone(entry, phone);
+		expect(handler).toHaveBeenCalledWith(<span class="hljs-string">'removed'</span>, entry, phone.key);
+		expect(handler).toHaveBeenCalledWith(<span class="hljs-string">'deleted'</span>, phone);
+		expect(handler.calls.count()).toBe(<span class="hljs-number">4</span>);
+	});
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-47">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-47">&#182;</a>
+              </div>
+              <h2 id="calculated-fields">Calculated fields</h2>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'A calculated field'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+	beforeEach(clearStorage);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-48">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-48">&#182;</a>
+              </div>
+              <h3 id="api-for-name-allows-either-name-or-first_name-last_name-fields">API for name allows either name or first_name + last_name fields</h3>
+<p>In reality, the former is just a calculated view of the latter.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'stores name fields separately'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-49">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-49">&#182;</a>
+              </div>
+              <p>Setting <code>name</code> actually tries to set first and last names.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		entry.name = <span class="hljs-string">"Alfred E. Neumann"</span>;
+		expect(entry.first_name).toBe(<span class="hljs-string">'Alfred E.'</span>);
+		expect(entry.last_name).toBe(<span class="hljs-string">'Neumann'</span>);
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-50">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-50">&#182;</a>
+              </div>
+              <h3 id="both-usages-are-valid-and-should-not-overwrite-the-other">Both usages are valid and should not overwrite the other</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'does not overwrite the individual name fields'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		entry.name = <span class="hljs-string">"Alfred E. Neumann"</span>;
+		entry.first_name = <span class="hljs-string">"Alfred C."</span>;
+		expect(entry.name).toBe(<span class="hljs-string">'Alfred C. Neumann'</span>);
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-51">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-51">&#182;</a>
+              </div>
+              <h3 id="old-applications-should-not-notice">Old applications should not notice</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'is backwards-compatible'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{
+		clearStorage();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-52">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-52">&#182;</a>
+              </div>
+              <p>Set up a fake old entry</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		<span class="hljs-built_in">window</span>.localStorage.setItem(<span class="hljs-string">'wp.entry-4E2111A0-8FAD-4C51-9396-CC42BB202E30'</span>, <span class="hljs-string">'{"name":"Test User","addresses":[],"is_company":false,"phones":[]}'</span>);
+		<span class="hljs-built_in">window</span>.localStorage.setItem(<span class="hljs-string">'"wp._index_"'</span>, <span class="hljs-string">'["wp.entry-4E2111A0-8FAD-4C51-9396-CC42BB202E30"]'</span>);
+		WP.all.entries(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(entries)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-53">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-53">&#182;</a>
+              </div>
+              <p>Loading an entry should automatically split name into <code>first_name</code> and <code>last_name</code> the same way setting <code>name</code> does</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			expect(entries.length).toBe(<span class="hljs-number">1</span>);
+			<span class="hljs-keyword">var</span> thomas = entries[<span class="hljs-number">0</span>];
+			expect(thomas.name).toBe(<span class="hljs-string">'Test User'</span>);
+			expect(thomas.first_name).toBe(<span class="hljs-string">'Test'</span>);
+			expect(thomas.last_name).toBe(<span class="hljs-string">'User'</span>);
+			done();
+		});
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-54">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-54">&#182;</a>
+              </div>
+              <h3 id="address-api-has-individual-store-for-each-field">Address API has individual store for each field</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'exists for addresses as well'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">var</span> address = WP.create.address();
+		address.address = <span class="hljs-string">'Blumenweg Nr. 13\n0000 Entenhausen\nCarl-Barks-Land'</span>;
+		expect(address.address).toBe(<span class="hljs-string">'Blumenweg Nr. 13\n0000 Entenhausen\nCarl-Barks-Land'</span>);
+		expect(address.street).toBe(<span class="hljs-string">'Blumenweg Nr.'</span>);
+		expect(address.number).toBe(<span class="hljs-string">'13'</span>);
+		expect(address.zip).toBe(<span class="hljs-string">'0000'</span>);
+		expect(address.city).toBe(<span class="hljs-string">'Entenhausen'</span>);
+		expect(address.country).toBe(<span class="hljs-string">'Carl-Barks-Land'</span>);
+	});
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-55">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-55">&#182;</a>
+              </div>
+              <h2 id="custom-fields">Custom fields</h2>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'A custom field'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+	beforeEach(clearStorage);
+
+	it(<span class="hljs-string">'does not validate before being added'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		entry.skype = <span class="hljs-string">"skype_name"</span>;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-56">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-56">&#182;</a>
+              </div>
+              <p><code>validate</code> will throw an exception if it finds fields it does not expect.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+			WP.validate(entry);
+		}).toThrowError(<span class="hljs-string">'Field “skype” not allowed for type “entry”. Must be one of first_name|last_name|is_company|addresses|phones.'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-57">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-57">&#182;</a>
+              </div>
+              <p>Saving should still work, even with the unknown fields</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+			WP.save(entry);
+		}).not.toThrow();
+	});
+
+	it(<span class="hljs-string">'can be added'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-58">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-58">&#182;</a>
+              </div>
+              <p>Declare a field using the type, the name and the default value</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.declareField(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'skype'</span>, <span class="hljs-string">'skype_name'</span>);
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		expect(entry.skype).toBe(<span class="hljs-string">'skype_name'</span>);
+		entry.skype = <span class="hljs-string">'skype2name'</span>;
+		expect(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-59">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-59">&#182;</a>
+              </div>
+              <p>Now the entry validates because we have declared the “skype” field</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			WP.validate(entry);
+			WP.save(entry);
+		}).not.toThrow();
+		WP.get(entry.key, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(entry)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-60">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-60">&#182;</a>
+              </div>
+              <p>After retrieval, the value should still be there</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			expect(entry.skype).toBe(<span class="hljs-string">'skype2name'</span>);
+			done();
+		});
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-61">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-61">&#182;</a>
+              </div>
+              <h3 id="entities-created-or-loaded-before-the-field-is-declared-">Entities created or loaded before the field is declared…</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'only exists for new or loaded entities'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{
+		WP.save(WP.create.entry());
+		<span class="hljs-keyword">var</span> oldEntry = WP.create.entry();
+		expect(oldEntry.skype).not.toBeDefined();
+		WP.declareField(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'skype'</span>, <span class="hljs-string">'skype_name'</span>);
+		<span class="hljs-keyword">var</span> newEntry = WP.create.entry();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-62">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-62">&#182;</a>
+              </div>
+              <p>…do not get the new behaviour</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(oldEntry.skype).not.toBeDefined();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-63">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-63">&#182;</a>
+              </div>
+              <p>but new ones do</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(newEntry.skype).toBeDefined();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-64">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-64">&#182;</a>
+              </div>
+              <p>Set explicit values</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		oldEntry.skype = <span class="hljs-literal">null</span>;
+		WP.save(oldEntry);
+		newEntry.skype = <span class="hljs-string">'skype2name'</span>;
+		WP.save(newEntry);
+		WP.all.entries(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(entries)</span> </span>{
+			expect(entries.length).toBe(<span class="hljs-number">3</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-65">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-65">&#182;</a>
+              </div>
+              <p>After loading…</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			entries.forEach(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(entry)</span> </span>{
+				<span class="hljs-keyword">if</span>(entry.key === newEntry.key) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-66">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-66">&#182;</a>
+              </div>
+              <p>…explicit values are not overridden</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					expect(entry.skype).toBe(<span class="hljs-string">'skype2name'</span>);
+				} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(entry.key === oldEntry.key) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-67">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-67">&#182;</a>
+              </div>
+              <p>…no matter when the API was created</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					expect(entry.skype).toBe(<span class="hljs-literal">null</span>);
+				} <span class="hljs-keyword">else</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-68">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-68">&#182;</a>
+              </div>
+              <p>…and all entries saved without value get the default value</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>					expect(entry.skype).toBe(<span class="hljs-string">'skype_name'</span>);
+				}
+			});
+			done();
+		});
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-69">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-69">&#182;</a>
+              </div>
+              <h3 id="trying-to-re-declare-exising-fields-fails">Trying to re-declare exising fields fails</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'can not override existing properties'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-70">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-70">&#182;</a>
+              </div>
+              <p>Entity does not exist</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+			WP.declareField(<span class="hljs-string">'__dummy'</span>, <span class="hljs-string">'test'</span>, <span class="hljs-literal">null</span>);
+		}).toThrowError(<span class="hljs-string">'Unable to declare field “test” on “__dummy”, not a known entity.'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-71">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-71">&#182;</a>
+              </div>
+              <p>Keywords are reserved</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+			WP.declareField(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'key'</span>, <span class="hljs-literal">null</span>);
+		}).toThrowError(<span class="hljs-string">'Unable to declare field “key” on “entry”, is a reserved keyword.'</span>);
+		expect(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+			WP.declareField(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'$$'</span>, <span class="hljs-literal">null</span>);
+		}).toThrowError(<span class="hljs-string">'Unable to declare field “$$” on “entry”, is a reserved keyword.'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-72">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-72">&#182;</a>
+              </div>
+              <p><code>first_name</code> field exists already</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+			WP.declareField(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'first_name'</span>, <span class="hljs-literal">null</span>);
+		}).toThrowError(<span class="hljs-string">'Unable to declare field “first_name” on “entry”, is already declared as field.'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-73">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-73">&#182;</a>
+              </div>
+              <p><code>name</code> calculated exists already</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+			WP.declareField(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-literal">null</span>);
+		}).toThrowError(<span class="hljs-string">'Unable to declare field “name” on “entry”, is already declared as calculated.'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-74">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-74">&#182;</a>
+              </div>
+              <p><code>phones</code> collection exists already</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+			WP.declareField(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'phones'</span>, <span class="hljs-literal">null</span>);
+		}).toThrowError(<span class="hljs-string">'Unable to declare field “phones” on “entry”, is already declared as collection.'</span>);
+	});
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-75">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-75">&#182;</a>
+              </div>
+              <h2 id="custom-collections">Custom collections</h2>
+<p>(can only contain references to declared entity types)</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'A custom collection'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+	beforeEach(clearStorage);
+
+	it(<span class="hljs-string">'can be added'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(done)</span> </span>{
+		WP.declareCollection(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'zweitwohnungen'</span>);
+		<span class="hljs-keyword">var</span> address = WP.create.address();
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		WP.add(<span class="hljs-string">'zweitwohnungen'</span>, entry, address);
+		WP.save(entry);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-76">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-76">&#182;</a>
+              </div>
+              <p>Make sure it’s stored in the correct field</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.retrieve(<span class="hljs-string">'zweitwohnungen'</span>, entry, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(zweitwohnungen)</span> </span>{
+			expect(zweitwohnungen.length).toBe(<span class="hljs-number">1</span>);
+			expect(zweitwohnungen[<span class="hljs-number">0</span>].key).toBe(address.key);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-77">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-77">&#182;</a>
+              </div>
+              <p>…and not the wrong one</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			WP.retrieve.addresses(entry, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(addresses)</span> </span>{
+				expect(addresses.length).toBe(<span class="hljs-number">0</span>);
+				done();
+			});
+		});
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-78">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-78">&#182;</a>
+              </div>
+              <h3 id="syntactic-sugar-for-retrieve-add-remove">Syntactic sugar for retrieve/add/remove</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'creates syntactic sugar'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		expect(WP.retrieve.zweitwohnungen).not.toBeDefined();
+		expect(WP.add.zweitwohnungen).not.toBeDefined();
+		expect(WP.remove.zweitwohnungen).not.toBeDefined();
+		WP.declareCollection(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'zweitwohnungen'</span>);
+		<span class="hljs-keyword">var</span> aFunction = jasmine.any(<span class="hljs-built_in">Function</span>);
+		expect(WP.retrieve.zweitwohnungen).toEqual(aFunction);
+		expect(WP.add.zweitwohnungen).toEqual(aFunction);
+		expect(WP.remove.zweitwohnungen).toEqual(aFunction);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-79">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-79">&#182;</a>
+              </div>
+              <p>No singular is declared because this collection does not equal an entity’s plural</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(WP.remove.zweitwohnung).not.toBeDefined();
+	});
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-80">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-80">&#182;</a>
+              </div>
+              <h2 id="custom-entities">Custom entities</h2>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'A custom entity'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+	beforeEach(clearStorage);
+
+	it(<span class="hljs-string">'can be added'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-81">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-81">&#182;</a>
+              </div>
+              <p>Declaring an entity needs the singular and the plural form</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.declareEntity(<span class="hljs-string">'network'</span>, <span class="hljs-string">'networks'</span>);
+	});
+
+	it(<span class="hljs-string">'cannot override an existing entity'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		expect(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+			WP.declareEntity(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'entries'</span>);
+		}).toThrowError(<span class="hljs-string">'Unable to declare entity “entry”, is already declared.'</span>);
+	});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-82">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-82">&#182;</a>
+              </div>
+              <h3 id="syntactic-sugar-for-create-all">Syntactic sugar for create/all</h3>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>	it(<span class="hljs-string">'creates syntactic sugar'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		expect(WP.create.network).not.toBeDefined();
+		expect(WP.all.networks).not.toBeDefined();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-83">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-83">&#182;</a>
+              </div>
+              <p>If plural is missing, it’s assumed to be singular+’s’</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		WP.declareEntity(<span class="hljs-string">'network'</span>);
+		<span class="hljs-keyword">var</span> aFunction = jasmine.any(<span class="hljs-built_in">Function</span>);
+		expect(WP.create.network).toEqual(aFunction);
+		expect(WP.all.networks).toEqual(aFunction);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-84">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-84">&#182;</a>
+              </div>
+              <p>If a collection is named the same as this entity, it is assumed to reference it</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>		expect(WP.retrieve.networks).not.toBeDefined();
+		expect(WP.add.networks).not.toBeDefined();
+		expect(WP.remove.networks).not.toBeDefined();
+		expect(WP.add.network).not.toBeDefined();
+		expect(WP.remove.network).not.toBeDefined();
+		WP.declareCollection(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'networks'</span>);
+		expect(WP.retrieve.networks).toEqual(aFunction);
+		expect(WP.add.networks).toEqual(aFunction);
+		expect(WP.remove.networks).toEqual(aFunction);
+		expect(WP.add.network).toEqual(aFunction);
+		expect(WP.remove.network).toEqual(aFunction);
+	});
+
+	it(<span class="hljs-string">'can be created'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		expect(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+			WP.create(<span class="hljs-string">'network'</span>);
+		}).toThrowError(<span class="hljs-string">'Unknown entity “network”.'</span>);
+		WP.declareEntity(<span class="hljs-string">'network'</span>);
+		<span class="hljs-keyword">var</span> network = WP.create(<span class="hljs-string">'network'</span>);
+		WP.save(network);
+	});
+
+	it(<span class="hljs-string">'can be appended'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		WP.declareEntity(<span class="hljs-string">'network'</span>);
+		WP.declareField(<span class="hljs-string">'network'</span>, <span class="hljs-string">'name'</span>, <span class="hljs-string">'xing'</span>);
+		WP.declareField(<span class="hljs-string">'network'</span>, <span class="hljs-string">'user'</span>);
+		WP.declareCollection(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'networks'</span>);
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		<span class="hljs-keyword">var</span> network = WP.create.network();
+		expect(network.name).toBe(<span class="hljs-string">'xing'</span>);
+		expect(network.user).toBeDefined();
+		WP.add.network(entry, network);
+		WP.retrieve.networks(entry, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(networks)</span> </span>{
+			expect(networks.length).toBe(<span class="hljs-number">1</span>);
+			expect(networks[<span class="hljs-number">0</span>].key).toBe(network.key);
+		});
+	});
+});</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-85">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-85">&#182;</a>
+              </div>
+              <h2 id="custom-calculated-fields">Custom calculated fields</h2>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>describe(<span class="hljs-string">'A custom calculated field'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+	beforeEach(clearStorage);
+
+	it(<span class="hljs-string">'can be added'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span> </span>{
+		<span class="hljs-keyword">var</span> entry = WP.create.entry();
+		expect(entry.company_name).not.toBeDefined();
+		WP.declareCalculated(<span class="hljs-string">'entry'</span>, <span class="hljs-string">'company_name'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">from</span><span class="hljs-params">(company_name)</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-86">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-86">&#182;</a>
+              </div>
+              <p>from is the function that gets called when the calculated has to be converted to properties</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">if</span>(company_name) {
+				<span class="hljs-keyword">this</span>.is_company = <span class="hljs-literal">true</span>;
+				<span class="hljs-keyword">this</span>.name = company_name;
+			} <span class="hljs-keyword">else</span> {
+				<span class="hljs-keyword">this</span>.is_company = <span class="hljs-literal">false</span>;
+			}
+		}, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">to</span><span class="hljs-params">()</span> </span>{</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-87">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-87">&#182;</a>
+              </div>
+              <p>to is the function that gets called when the properties have to be converted to the calculated</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>			<span class="hljs-keyword">if</span>(!<span class="hljs-keyword">this</span>.is_company) {
+				<span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+			}
+			<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.name;
+		});
+		entry = WP.create.entry();
+		expect(entry.company_name).toBeDefined();
+		expect(entry.is_company).toBe(<span class="hljs-literal">false</span>);
+		entry.company_name = <span class="hljs-string">'Acme Co.'</span>;
+		expect(entry.is_company).toBe(<span class="hljs-literal">true</span>);
+		expect(entry.company_name).toBe(<span class="hljs-string">'Acme Co.'</span>);
+		expect(entry.name).toBe(<span class="hljs-string">'Acme Co.'</span>);
+		expect(entry.first_name).toBe(<span class="hljs-string">'Acme'</span>);
+		expect(entry.last_name).toBe(<span class="hljs-string">'Co.'</span>);
+		entry.company_name = <span class="hljs-literal">null</span>;
+		expect(entry.is_company).toBe(<span class="hljs-literal">false</span>);
+		expect(entry.company_name).toBe(<span class="hljs-literal">null</span>);
+		expect(entry.name).toBe(<span class="hljs-string">'Acme Co.'</span>);
+		entry.is_company = <span class="hljs-literal">true</span>;
+		expect(entry.is_company).toBe(<span class="hljs-literal">true</span>);
+		expect(entry.company_name).toBe(<span class="hljs-string">'Acme Co.'</span>);
+	});
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,204 @@
+        <form ng-submit="addContact()">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <fieldset class="col-md-12 col-lg-4 col-lg-offset-1">
+                            <legend>Profil Icon</legend>
+                            <!---Profilbild, Name und Adresse-->
+                            <div class="form-group">
+                                <label for="bildUpload">Foto..</label>
+                                <input type="file" name="bildUpload" id="bildUpload" onchange="fileSelected();">
+                            </div>
+                            <button class="btn btn-default btn-xs">hochladen</button>
+                            <div class="form-group">
+                                <label for="selectIcon">..oder Symbol</label>
+                                <select name "selectIcon" class="form-control">
+                                    <option>Herz</option>
+                                    <option>Auto</option>
+                                    <option>Kleblatt</option>
+                                    <option>Smili</option>
+                                </select>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="favIcon" value="favIcon">..oder Short Cut Icon verwenden
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="farbeAusw">Farbe wählen</label>
+                                <input type="color" class="form-control" name="farbeAusw">
+                            </div>
+                        </fieldset>
+                        <fieldset class="col-md-12 col-lg-4 col-lg-offset-1">
+                            <!--Name, Adresse-->
+                            <legend>Anschrift</legend>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="name" id="name" value="" placeholder="Name" ng-model="newContact.name">
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="2" cols="20" name="adresse" class="form-control" id="adresse" value="" placeholder="Adresse"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <select neme="adressTyp" class="form-control" value="Privat">
+                                    <option>Privat</option>
+                                    <option>Geschäft</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Erste Adresse</option>
+                                    <option>Zweite Adresse</option>
+                                    <option>Dritte Adresse</option>
+                                    <option>Weitere Adressse</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-default btn-xs">+ Adresse</button>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <fieldset class="col-md-12 col-lg-4 col-lg-offset-1">
+                            <!--Telefonnummern-->
+                            <legend>Telefonnummern</legend>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Mobil</option>
+                                    <option>Festnetz</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="tkm1Info1" class="form-control" id="tkm1Info1" value="" placeholder="Tel. Nr.">
+                            </div>
+                            <div class="checkbox-inline">
+                                <label>
+                                    <input type="checkbox" name="sms" value="SMS">Tel.
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <label>
+                                    <input type="checkbox" name="sms" value="SMS">SMS
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <label>
+                                    <input type="checkbox" name="fax" value="Fax">Fax
+                                </label>
+                            </div>
+                            <div class="checkbox-inline">
+                                <label>
+                                    <input type="checkbox" name="pager" value="Pager">Pager
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="startPageYes" value="SPY" checked="true">Zur Startseite hinzufügen
+                                </label>
+                            </div>
+                            <button class="btn btn-default btn-xs">+ Telefonnummer</button>
+                        </fieldset>
+                        <fieldset class="col-md-12 col-lg-4 col-lg-offset-1">
+                            <legend>E-Mail</legend>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Privat</option>
+                                    <option>Geschäft</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="E-Mail">
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="startPageYes" value="SPY" checked="true">Zur Startseite hinzufügen
+                                </label>
+                            </div>
+                            <button class="btn btn-default btn-xs">+ E-Mail</button>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <fieldset class="col-md-12 col-lg-4 col-lg-offset-1">
+                            <legend>Website</legend>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>Privat</option>
+                                    <option>Geschäft</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="url" class="form-control" name="url" id="url" placeholder="URL Website">
+                            </div>
+                            <button class="btn btn-default btn-xs">+ URL Website</button>
+                        </fieldset>
+                        <fieldset class="col-md-12 col-lg-4 col-lg-offset-1">
+                            <legend>Messinger</legend>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>
+                                        <a href="#"><img src="../images/skype.png">
+                                        </a>
+                                    </option>
+                                    <option>
+                                        <a href="#"><img src="../images/skype.png">
+                                        </a>
+                                    </option>
+                                    <option>
+                                        <a href="#"><img src="../images/skype.png">
+                                        </a>
+                                    </option>
+                                </select>
+                            </div>
+                            <button class="btn btn-default btn-xs">+ Messinger</button>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <fieldset class="col-md-12 col-lg-4 col-lg-offset-1">
+                            <legend>Social Media Profil</legend>
+                            <div class="form-group">
+                                <select class="form-control">
+                                    <option>
+                                        <a href="#"><img src="../images/google-plus.png">
+                                        </a>
+                                    </option>
+                                    <option>
+                                        <a href="#"><img src="../images/google-plus.png">
+                                        </a>
+                                    </option>
+                                    <option>
+                                        <a href="#"><img src="../images/google-plus.png">
+                                        </a>
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="url" class="form-control" name="url" placeholder="URL Social Media Profil">
+                            </div>
+                            <button class="btn btn-default btn-xs">+ Social Media Profil</button>
+                        </fieldset>
+                        <fieldset class="col-md-12 col-lg-4 col-lg-offset-1">
+                        <input type="submit" value="Speichern">
+                        <h3>Adressen:</h3>
+                        <ul ng-repeat="adresse in adressen">
+                            <li>{{adresse.name}}</li>
+                        </ul>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+</body>
+
+</html>

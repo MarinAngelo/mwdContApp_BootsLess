@@ -1,0 +1,87 @@
+<div id="detailAns">
+    <div class="detailPanel panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" contenteditable="true">{{currentDetail.name}}</h3>
+            <nav>
+                <!-- Kontakt löschen -->
+                <button ng-click="removeContact(currentDetail)" type="button" id="remove" class="btn btn-sm">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> del
+                </button>
+                <!-- <a id="" class="icon" href="#" ng-click="removeContact(currentDetail)">remove-2</a> -->
+                <!-- exportieren -->
+                <button ng-click="exportVcard()" type="button" id="arrow-up-right" class="btn btn-sm" title="export">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> export
+                </button>
+                <!-- editieren / speichern -->
+                <button ng-click="toggleEditing()" type="button" id="edit" class="btn btn-sm" title="bearbeiten / speichern">
+                {{editing ? 'save' : 'edit'}}
+                </button>
+                <!-- zurück zur Liste -->
+                <button ng-click="clearDetail()" type="button" id="back" class="btn btn-sm" title="zurück">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> back
+                </button>
+            </nav>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
+                <!-- <li class="list-group-item">
+                    <figure class="profilIcon profilImage_d">
+                        <p class="icon" ng-hide="currentDetail.profilPic">user</p>
+                        <img src="{{currentDetail.profilPic}}" class="img-rounded" ng-show="currentDetail.profilPic">
+                    </figure>
+                    <!-- Bild Hochladen
+                    <button ng-click="expression" class="icon">upload2</button>
+                </li> -->
+                <li class="list-group-item">
+                    <img class="img-responsive img-circle" ng-src="{{currentDetail.imageURL || './images/user.png'}}" width="200" height="200" alt="avatar" class="photo" />
+                    <image-loader ng-if="editing" on-image="saveImageURL(url)"></image-loader>
+                </li>
+            </ul>
+            <h3>Addresses</h3>
+            <fieldset ng-repeat="address in addresses">
+                <legend>
+                    <div ng-if="editing">
+                        <input ng-model="address.label" />
+                    </div>
+                    <div ng-if="!editing">{{address.label}}</div>
+                </legend>
+                <input ng-readonly="!editing" ng-model="address.street" class="form-control" placeholder="Straße" />
+                <input ng-readonly="!editing" ng-model="address.number" class="form-control" placeholder="Nummer" />
+                <input ng-readonly="!editing" ng-model="address.zip" class="form-control" placeholder="PLZ" />
+                <input ng-readonly="!editing" ng-model="address.city" class="form-control" placeholder="Ort" />
+                <input ng-readonly="!editing" ng-model="address.country" class="form-control" placeholder="Land" />
+            </fieldset>
+            <button ng-hide="!editing" ng-click="addAddress()">New Address</button>
+            <!-- **************************************************************
+                <li class="list-group-item" contenteditable="true">{{currentDetail.street}}</br>{{currentDetail.zipCode}} {{currentDetail.citi}}</li>
+                <!--*1:wenn mehrere currentDetailn vorhanden ">" Symbol anzeigen und iterieren
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/mobile2.png">
+                    </a>
+                    <a href="#"><img src="../images/bubbles3.png">
+                    </a>
+                    <span contenteditable="true">{{currentDetail.mobile}}</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/envelop.png">
+                    </a><span contenteditable="true">{{currentDetail.email}}</span>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/globe.png">
+                    </a><span contenteditable="true"><a href="{{currentDetail.websiteURL}}">{{currentDetail.website}}</a></span>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/skype.png">
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/tumblr.png">
+                    </a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#"><img src="../images/facebook.png">
+                    </a>bla bla</li>
+            </ul> -->
+        </div>
+    </div>
+</div>
