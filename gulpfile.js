@@ -9,12 +9,11 @@ var serveIndex        = require('serve-index');
 var opn               = require('opn');
 //nach Änderungen automatisch laden
 var connectLivereload = require('connect-livereload');
-//less Files kompilieren
-var less              = require('gulp-less');
-//??
-// var nib               = require('nib');hat was mit stylus zu tun
+
 var pipe              = require('multipipe');
 var path              = require('path');
+
+//Alle gulp-Plugins laden, die in node_modules installiert sind
 var plugins           = require('gulp-load-plugins')();
 var handleError = function(err) {
   console.log(err.toString());
@@ -28,7 +27,7 @@ gulp.task('clean', function(cb) {
 
 gulp.task('style', function() {
   return gulp.src('app/css/**/!(*.inc).less', {base: "app"})
-    .pipe(less())
+    .pipe(plugins.less())
     .pipe(gulp.dest('app'));
 });
 
@@ -42,6 +41,7 @@ gulp.task('prepare', ['style', 'hint']);
 
 gulp.task('images', function() {
   return gulp.src('app/images/**', {base: './app'})
+    .pipe(plugins.newer('dist'))
     .pipe(plugins.imagemin())
     .pipe(gulp.dest('dist'));
 });
@@ -98,8 +98,9 @@ gulp.task('serve', ['connect'], function() {
 });
 
 gulp.task('watch', ['connect', 'serve', 'style'], function() {
-  gulp.livereload.listen();
+  gulp.watch(['app/css/**/*.less'], ['style']);
+  plugins.livereload.listen();
   gulp.watch([
     'app/**',
-  ]).on('change', gulpLivereload.changed);
+  ]).on('change', plugins.livereload.changed);
 });
