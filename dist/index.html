@@ -6,16 +6,13 @@
     <title>Kontakte</title>
     <!--braucht das gulpfile um Dateien zusammenzufassen-->
     <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 </head>
 
 <body>
     <div class="container">
-        <!-- ngMaterial stuff -->
-        <!-- <div layout="column" layout-fill> -->
-        <!-- <md-toolbar> -->
         <ng-include src="'parts/header_1.html'"></ng-include>
-        <!-- </md-toolbar> -->
-        <!-- </div> -->
         <main ng-view></main>
         <ng-include src="'parts/footer.html'"></ng-include>
     </div>

@@ -1,6 +1,6 @@
 {
   "name": "AdressApp",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Marinus Beispielprojekt Kurs Mobile Web Development",
   "main": "index.js",
   "scripts": {},
@@ -34,6 +34,9 @@
     "opn": "^1.0.0",
     "serve-index": "^1.5.0",
     "serve-static": "^1.7.1",
+    "through2": "^0.6.5",
+    "vinyl": "^0.4.6",
+    "vinyl-map": "^1.0.1",
     "vinyl-transform": "^1.0.0",
     "virginity": "^0.1.0"
   },

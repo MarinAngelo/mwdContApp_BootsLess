@@ -1,74 +1,21 @@
 'use strict';
 
-var PORT = 9000;
-
-// Node internals
-var fs                = require('fs');
-
-// Helpers
+var gulp              = require('gulp');
 var del               = require('del');
+//server
 var connect           = require('connect');
 var serveStatic       = require('serve-static');
 var serveIndex        = require('serve-index');
 var opn               = require('opn');
+//nach Änderungen automatisch laden
 var connectLivereload = require('connect-livereload');
-var nib               = require('nib');
+//less Files kompilieren
+var less              = require('gulp-less');
+//??
+// var nib               = require('nib');hat was mit stylus zu tun
 var pipe              = require('multipipe');
-var browserify        = require('browserify');
-
-// Gulp-internals
-var transform         = require('vinyl-transform');
-var map               = require('vinyl-map');
-var File              = require('vinyl');
-var through           = require('through2');
-var gulp              = require('gulp');
-
-// All plugins (modules whose name start with “gulp-”)
+var path              = require('path');
 var plugins           = require('gulp-load-plugins')();
-
-// Information about our app
-var app               = require('./package.json');
-
-var VERSION = parseInt(app.version, 10);
-
-// Define our own browserify plugin
-plugins.browserify    = transform(function(fileName) {
-  return browserify({entries: fileName}).bundle();
-});
-
-// Define our own manifest plugin
-plugins.manifest      = function(fileName) {
-  // This holds the content of out manifest
-  var manifest = ['CACHE MANIFEST'];
-  var html = through.obj(function eachHTML(file, enc, cb) {
-    var html = file.contents.toString();
-    // Write the manifest’s location to the <html> tag
-    file.contents = new Buffer(html.replace(/<html([^>]*)>/, '<html$1 manifest="'+fileName+'">'), 'utf8');
-    this.push(file);
-    manifest.push(file.relative);
-    cb();
-  });
-  var assets = through.obj(function eachAsset(file, enc, cb) {
-    this.push(file);
-    // add the path of the asset to the manifest
-    manifest.push(file.relative);
-    cb();
-  }, function flush(cb) {
-    // Push the manifest file itself into the gulp stream (along with the other assets)
-    this.push(new File({
-      cwd: '/',
-      base: '/',
-      path: '/'+fileName,
-      contents: new Buffer(manifest.join('\n') + '\n', 'utf8')
-    }));
-    cb();
-  });
-  return {
-    html: html,
-    assets: assets
-  };
-};
-
 var handleError = function(err) {
   console.log(err.toString());
   this.emit('end');
@@ -78,52 +25,33 @@ gulp.task('clean', function(cb) {
   del(['dist'], cb);
 });
 
+
 gulp.task('style', function() {
-  return gulp.src('app/**/*.styl')
-    .pipe(plugins.stylus({
-      use: [
-        nib()
-      ]
-    })).on('error', handleError)
+  return gulp.src('app/css/**/!(*.inc).less', {base: "app"})
+    .pipe(less())
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('lib', function() {
-  gulp.src('browserify.js')
-  .pipe(plugins.browserify)
-  .pipe(gulp.dest('app/js'));
-});
-
-// TODO: replace font path in css
-
-// exclude browserify
 gulp.task('hint', function() {
-  return gulp.src(['app/js/*.js', '!app/js/browserify.js'])
+  return gulp.src('app/*.js')
     .pipe(plugins.jshint()).on('error', handleError)
     .pipe(plugins.jshint.reporter('default'));
 });
 
-gulp.task('prepare', ['style', 'hint', 'lib']);
+gulp.task('prepare', ['style', 'hint']);
 
 gulp.task('images', function() {
-  return gulp.src('app/images/**', {
-      base: './app'
-    })
-      .pipe(plugins.imagemin())
-      .pipe(gulp.dest('dist'));
-});
-
-gulp.task('fonts', function() {
-  return gulp.src(['app/bower_components/bootstrap/fonts/*', 'app/fonts/*'])
-    .pipe(gulp.dest('dist/'+VERSION+'/fonts'));
+  return gulp.src('app/images/**', {base: './app'})
+    .pipe(plugins.imagemin())
+    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('assets', function() {
   var assets = plugins.useref.assets();
-  return gulp.src(['app/**/*.html', '!app/js/**/*.html'])
-    .pipe(map(function(code, filename) {
-      return code.toString().replace(/\bASSET_VERSION\b/g, VERSION);
-    }))
+
+  return gulp.src(['app/**/*.html'], {
+      dot: true
+    })
     .pipe(assets)
     .pipe(
       plugins.if('*.js',
@@ -138,47 +66,16 @@ gulp.task('assets', function() {
         plugins.csso()
       )
     ).on('error', handleError)
-    // Pass all assets to the appcache manifest
     .pipe(assets.restore())
     .pipe(plugins.useref())
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('manifest', function() {
-  var manifest = plugins.manifest(app.name+'.appcache');
-  return gulp.src(['dist/*.html', 'dist/'+VERSION+'/**/*'], {
-    base: './dist',
-    nodir: true
-  })
-  .pipe(plugins.if('*.html',
-    manifest.html,
-    manifest.assets
-  ))
-  .pipe(gulp.dest('dist'));
-});
+gulp.task('build', ['prepare', 'images', 'assets']);
 
-gulp.task('version', function(cb) {
-	var next = VERSION+1;
-	console.log('Jumping from', VERSION, 'to', next);
-  VERSION = next;
-  app.version = ''+VERSION+'.0.0';
-  fs.writeFile('./package.json', JSON.stringify(app, null, 2), cb);
-});
-
-gulp.task('build', ['prepare', 'images', 'fonts', 'assets'], function() {
-  gulp.start('manifest');
-});
-
-gulp.task('full-build', ['version', 'clean'], function() {
+gulp.task('default', ['clean'], function() {
   gulp.start('build');
 });
-
-gulp.task('cordova', function() {
-  return gulp.src('dist/**')
-  .pipe(gulp.dest('../www'));
-});
-
-gulp.task('default', ['full-build']);
 
 gulp.task('connect', function(cb) {
   var server = connect();
@@ -189,21 +86,20 @@ gulp.task('connect', function(cb) {
   server.use(serveIndex('app'));
 
   require('http').createServer(server)
-    .listen(PORT)
+    .listen(9000)
     .on('listening', function() {
-      console.log('Started connect web server on http://localhost:'+PORT);
+      console.log('Started connect web server on http://localhost:9000');
       cb();
     });
 });
 
 gulp.task('serve', ['connect'], function() {
-  opn('http://localhost:'+PORT);
+  opn('http://localhost:9000');
 });
 
-gulp.task('watch', ['connect', 'serve', 'style', 'lib'], function() {
-  gulp.watch(['app/**/*.styl'], ['style']);
-  plugins.livereload.listen();
+gulp.task('watch', ['connect', 'serve', 'style'], function() {
+  gulp.livereload.listen();
   gulp.watch([
-    'app/**/*.{css,html,js}',
-  ]).on('change', plugins.livereload.changed).on('change', console.log.bind(console, 'changed'));
+    'app/**',
+  ]).on('change', gulpLivereload.changed);
 });

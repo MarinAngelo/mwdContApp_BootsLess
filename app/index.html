@@ -8,32 +8,23 @@
     <!-- build:css styles.css -->
     <link rel="stylesheet" href="css/icon_font.css">
     <link rel="stylesheet" href="css/styles.css">
-    <!-- ng material -->
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- endbuild -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
 </head>
 
 <body>
     <div class="container">
-        <!-- ngMaterial stuff -->
-        <!-- <div layout="column" layout-fill> -->
-        <!-- <md-toolbar> -->
         <ng-include src="'parts/header_1.html'"></ng-include>
-        <!-- </md-toolbar> -->
-        <!-- </div> -->
         <main ng-view></main>
         <ng-include src="'parts/footer.html'"></ng-include>
     </div>
     <!-- build:js js.js-->
     <script src="bower_components/angular/angular.js"></script>
-    <!-- ng material -->
-    <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="js/app.js"></script>
     <script src="js/routes.js"></script>
-    <!-- ng material -->
-    <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="js/controllers/detail.js"></script>
     <script src="js/controllers/form.js"></script>
     <script src="js/controllers/list.js"></script>
